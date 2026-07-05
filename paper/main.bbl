@@ -1,0 +1,151 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{33}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Mandelstam}\ and\ \citenamefont {Tamm}(1945)}]{MandelstamTamm1945}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Mandelstam}}\ and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Tamm}},\ }\bibfield  {title} {\bibinfo {title} {The uncertainty relation between energy and time in non-relativistic quantum mechanics},\ }\href {https://doi.org/10.1007/978-3-642-74626-0_8} {\bibfield  {journal} {\bibinfo  {journal} {J. Phys. (USSR)}\ }\textbf {\bibinfo {volume} {9}},\ \bibinfo {pages} {249} (\bibinfo {year} {1945})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Margolus}\ and\ \citenamefont {Levitin}(1998)}]{MargolusLevitin1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Margolus}}\ and\ \bibinfo {author} {\bibfnamefont {L.~B.}\ \bibnamefont {Levitin}},\ }\bibfield  {title} {\bibinfo {title} {The maximum speed of dynamical evolution},\ }\href {https://doi.org/10.1016/S0167-2789(98)00054-2} {\bibfield  {journal} {\bibinfo  {journal} {Physica D}\ }\textbf {\bibinfo {volume} {120}},\ \bibinfo {pages} {188} (\bibinfo {year} {1998})},\ \Eprint {https://arxiv.org/abs/quant-ph/9710043} {arXiv:quant-ph/9710043 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Levitin}\ and\ \citenamefont {Toffoli}(2009)}]{LevitinToffoli2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~B.}\ \bibnamefont {Levitin}}\ and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Toffoli}},\ }\bibfield  {title} {\bibinfo {title} {Fundamental limit on the rate of quantum dynamics: The unified bound is tight},\ }\href {https://doi.org/10.1103/PhysRevLett.103.160502} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {103}},\ \bibinfo {pages} {160502} (\bibinfo {year} {2009})},\ \Eprint {https://arxiv.org/abs/0905.3417} {arXiv:0905.3417 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Deffner}\ and\ \citenamefont {Campbell}(2017)}]{DeffnerCampbell2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Deffner}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Campbell}},\ }\bibfield  {title} {\bibinfo {title} {Quantum speed limits: from {Heisenberg's} uncertainty principle to optimal quantum control},\ }\href {https://doi.org/10.1088/1751-8121/aa86c6} {\bibfield  {journal} {\bibinfo  {journal} {J. Phys. A: Math. Theor.}\ }\textbf {\bibinfo {volume} {50}},\ \bibinfo {pages} {453001} (\bibinfo {year} {2017})},\ \Eprint {https://arxiv.org/abs/1705.08023} {arXiv:1705.08023 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Garc{\'\i}a-Pintos}\ \emph {et~al.}(2022)\citenamefont {Garc{\'\i}a-Pintos}, \citenamefont {Nicholson}, \citenamefont {Green}, \citenamefont {del Campo},\ and\ \citenamefont {Gorshkov}}]{GarciaPintos2022UnifyingObservables}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~P.}\ \bibnamefont {Garc{\'\i}a-Pintos}}, \bibinfo {author} {\bibfnamefont {S.~S.~B.}\ \bibnamefont {Nicholson}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Green}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {del Campo}},\ and\ \bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont {Gorshkov}},\ }\bibfield  {title} {\bibinfo {title} {Unifying quantum and classical speed limits on observables},\ }\href {https://doi.org/10.1103/PhysRevX.12.011038} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo {volume} {12}},\ \bibinfo {pages} {011038} (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2108.04261} {arXiv:2108.04261 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mohan}\ and\ \citenamefont {Pati}(2022)}]{mohan2022quantum}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Mohan}}\ and\ \bibinfo {author} {\bibfnamefont {A.~K.}\ \bibnamefont {Pati}},\ }\bibfield  {title} {\bibinfo {title} {Quantum speed limits for observables},\ }\href {https://doi.org/10.1103/PhysRevA.106.042436} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {106}},\ \bibinfo {pages} {042436} (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2112.13789} {arXiv:2112.13789 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bringewatt}\ \emph {et~al.}(2025)\citenamefont {Bringewatt}, \citenamefont {Steffen}, \citenamefont {Ritter}, \citenamefont {Ehrenberg}, \citenamefont {Wang}, \citenamefont {Palmer}, \citenamefont {Koll{\'a}r}, \citenamefont {Gorshkov},\ and\ \citenamefont {Garc{\'i}a-Pintos}}]{Bringewatt2024GeneralizedGeometric}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Bringewatt}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Steffen}}, \bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont {Ritter}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Ehrenberg}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Wang}}, \bibinfo {author} {\bibfnamefont {B.~S.}\ \bibnamefont {Palmer}}, \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Koll{\'a}r}}, \bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont {Gorshkov}},\ and\ \bibinfo {author} {\bibfnamefont {L.~P.}\ \bibnamefont {Garc{\'i}a-Pintos}},\ }\bibfield  {title} {\bibinfo {title} {Generalized geometric speed limits for quantum observables},\ }\href {https://doi.org/10.1103/h6lj-d6yt} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Research}\ }\textbf {\bibinfo {volume} {7}},\ \bibinfo {pages} {033222} (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2409.04544} {arXiv:2409.04544 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Carabba}\ \emph {et~al.}(2022)\citenamefont {Carabba}, \citenamefont {H{\"o}rnedal},\ and\ \citenamefont {del Campo}}]{Carabba2022operatorflows}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Carabba}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {H{\"o}rnedal}},\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {del Campo}},\ }\bibfield  {title} {\bibinfo {title} {Quantum speed limits on operator flows and correlation functions},\ }\href {https://doi.org/10.22331/q-2022-12-22-884} {\bibfield  {journal} {\bibinfo  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages} {884} (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2207.05769} {arXiv:2207.05769 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Miao}\ \emph {et~al.}(2025)\citenamefont {Miao}, \citenamefont {Liu}, \citenamefont {Ning}, \citenamefont {Hu}, \citenamefont {Zhang}, \citenamefont {Li},\ and\ \citenamefont {Guo}}]{Miao2025Experiment}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Z.-H.}\ \bibnamefont {Miao}}, \bibinfo {author} {\bibfnamefont {Z.-Y.}\ \bibnamefont {Liu}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Ning}}, \bibinfo {author} {\bibfnamefont {W.-B.}\ \bibnamefont {Hu}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Zhang}}, \bibinfo {author} {\bibfnamefont {C.-F.}\ \bibnamefont {Li}},\ and\ \bibinfo {author} {\bibfnamefont {G.-C.}\ \bibnamefont {Guo}},\ }\bibfield  {title} {\bibinfo {title} {Implementation of multiparticle quantum speed limits on observables},\ }\href {https://doi.org/10.1126/sciadv.ady0497} {\bibfield  {journal} {\bibinfo  {journal} {Sci. Adv.}\ }\textbf {\bibinfo {volume} {11}},\ \bibinfo {pages} {eady0497} (\bibinfo {year} {2025})},\ \Eprint {https://arxiv.org/abs/2510.05794} {arXiv:2510.05794 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hamazaki}(2022)}]{Hamazaki2022SpeedLimits}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Hamazaki}},\ }\bibfield  {title} {\bibinfo {title} {Speed limits for macroscopic transitions},\ }\href {https://doi.org/10.1103/PRXQuantum.3.020319} {\bibfield  {journal} {\bibinfo  {journal} {PRX Quantum}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages} {020319} (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2110.09716} {arXiv:2110.09716 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jones}\ and\ \citenamefont {Kok}(2010)}]{JonesKok2010GeometricDerivation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~J.}\ \bibnamefont {Jones}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Kok}},\ }\bibfield  {title} {\bibinfo {title} {Geometric derivation of the quantum speed limit},\ }\href {https://doi.org/10.1103/PhysRevA.82.022107} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {82}},\ \bibinfo {pages} {022107} (\bibinfo {year} {2010})},\ \Eprint {https://arxiv.org/abs/1003.4870} {arXiv:1003.4870 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zwierz}(2012)}]{Zwierz2012Comment}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Zwierz}},\ }\bibfield  {title} {\bibinfo {title} {Comment on ``geometric derivation of the quantum speed limit''},\ }\href {https://doi.org/10.1103/PhysRevA.86.016101} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo {pages} {016101} (\bibinfo {year} {2012})},\ \Eprint {https://arxiv.org/abs/1207.2208} {arXiv:1207.2208 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bhattacharyya}(1983)}]{Bhattacharyya1983}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Bhattacharyya}},\ }\bibfield  {title} {\bibinfo {title} {Quantum decay and the {Mandelstam--Tamm}-energy inequality},\ }\href {https://doi.org/10.1088/0305-4470/16/13/021} {\bibfield  {journal} {\bibinfo  {journal} {J. Phys. A: Math. Gen.}\ }\textbf {\bibinfo {volume} {16}},\ \bibinfo {pages} {2993} (\bibinfo {year} {1983})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Giovannetti}\ \emph {et~al.}(2003)\citenamefont {Giovannetti}, \citenamefont {Lloyd},\ and\ \citenamefont {Maccone}}]{Giovannetti2003QuantumLimits}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Giovannetti}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Lloyd}},\ and\ \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Maccone}},\ }\bibfield  {title} {\bibinfo {title} {Quantum limits to dynamical evolution},\ }\href {https://doi.org/10.1103/PhysRevA.67.052109} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {67}},\ \bibinfo {pages} {052109} (\bibinfo {year} {2003})},\ \Eprint {https://arxiv.org/abs/quant-ph/0210197} {arXiv:quant-ph/0210197 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ness}\ \emph {et~al.}(2022)\citenamefont {Ness}, \citenamefont {Alberti},\ and\ \citenamefont {Sagi}}]{Ness2022BoundedSpectrumQSL}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Ness}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Alberti}},\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Sagi}},\ }\bibfield  {title} {\bibinfo {title} {Quantum speed limit for states with a bounded energy spectrum},\ }\href {https://doi.org/10.1103/PhysRevLett.129.140403} {\bibfield  {journal} {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume} {129}},\ \bibinfo {pages} {140403} (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2206.14803} {arXiv:2206.14803 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {H{\"o}rnedal}\ and\ \citenamefont {S{\"o}nnerborn}(2023{\natexlab{a}})}]{Hornedal2023MargolusLevitinArbitraryFidelity}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {H{\"o}rnedal}}\ and\ \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {S{\"o}nnerborn}},\ }\bibfield  {title} {\bibinfo {title} {Margolus-{Levitin} quantum speed limit for an arbitrary fidelity},\ }\href {https://doi.org/10.1103/PhysRevResearch.5.043234} {\bibfield  {journal} {\bibinfo  {journal} {Physical Review Research}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages} {043234} (\bibinfo {year} {2023}{\natexlab{a}})},\ \Eprint {https://arxiv.org/abs/2301.10063} {arXiv:2301.10063 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {S{\"o}nnerborn}(2026)}]{Sonnerborn2026MLsaturate}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {S{\"o}nnerborn}},\ }\bibfield  {title} {\bibinfo {title} {Systems that saturate the {Margolus--Levitin} quantum speed limit},\ }\href {https://doi.org/10.1016/j.physleta.2026.131465} {\bibfield  {journal} {\bibinfo  {journal} {Physics Letters A}\ }\textbf {\bibinfo {volume} {577}},\ \bibinfo {pages} {131465} (\bibinfo {year} {2026})},\ \Eprint {https://arxiv.org/abs/2511.23237} {arXiv:2511.23237 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hamazaki}(2024)}]{Hamazaki2023QuantumVelocityLimits}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Hamazaki}},\ }\bibfield  {title} {\bibinfo {title} {Quantum velocity limits for multiple observables: Conservation laws, correlations, and macroscopic systems},\ }\href {https://doi.org/10.1103/PhysRevResearch.6.013018} {\bibfield  {journal} {\bibinfo  {journal} {Physical Review Research}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages} {013018} (\bibinfo {year} {2024})},\ \bibinfo {note} {arXiv:2305.03190},\ \Eprint {https://arxiv.org/abs/2305.03190} {arXiv:2305.03190 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Erker}\ \emph {et~al.}(2017)\citenamefont {Erker}, \citenamefont {Mitchison}, \citenamefont {Silva}, \citenamefont {Woods}, \citenamefont {Brunner},\ and\ \citenamefont {Huber}}]{Erker2017AutonomousClocks}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Erker}}, \bibinfo {author} {\bibfnamefont {M.~T.}\ \bibnamefont {Mitchison}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Silva}}, \bibinfo {author} {\bibfnamefont {M.~P.}\ \bibnamefont {Woods}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Brunner}},\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Huber}},\ }\bibfield  {title} {\bibinfo {title} {Autonomous quantum clocks: Does thermodynamics limit our ability to measure time?},\ }\href {https://doi.org/10.1103/PhysRevX.7.031022} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo {volume} {7}},\ \bibinfo {pages} {031022} (\bibinfo {year} {2017})},\ \Eprint {https://arxiv.org/abs/1609.06704} {arXiv:1609.06704 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Woods}(2021)}]{Woods2021AutonomousTicking}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~P.}\ \bibnamefont {Woods}},\ }\bibfield  {title} {\bibinfo {title} {Autonomous ticking clocks from axiomatic principles},\ }\href {https://doi.org/10.22331/q-2021-01-17-381} {\bibfield  {journal} {\bibinfo  {journal} {Quantum}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages} {381} (\bibinfo {year} {2021})},\ \Eprint {https://arxiv.org/abs/2005.04628} {arXiv:2005.04628 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pearson}\ \emph {et~al.}(2021)\citenamefont {Pearson}, \citenamefont {Guryanova}, \citenamefont {Erker}, \citenamefont {Laird}, \citenamefont {Briggs}, \citenamefont {Huber},\ and\ \citenamefont {Ares}}]{Pearson2021Timekeeping}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~N.}\ \bibnamefont {Pearson}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Guryanova}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Erker}}, \bibinfo {author} {\bibfnamefont {E.~A.}\ \bibnamefont {Laird}}, \bibinfo {author} {\bibfnamefont {G.~A.~D.}\ \bibnamefont {Briggs}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Huber}},\ and\ \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Ares}},\ }\bibfield  {title} {\bibinfo {title} {Measuring the thermodynamic cost of timekeeping},\ }\href {https://doi.org/10.1103/PhysRevX.11.021029} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo {volume} {11}},\ \bibinfo {pages} {021029} (\bibinfo {year} {2021})},\ \Eprint {https://arxiv.org/abs/2006.08670} {arXiv:2006.08670 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Meier}\ \emph {et~al.}(2023)\citenamefont {Meier}, \citenamefont {Schwarzhans}, \citenamefont {Erker},\ and\ \citenamefont {Huber}}]{Meier2023AccuracyResolution}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Meier}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Schwarzhans}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Erker}},\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Huber}},\ }\bibfield  {title} {\bibinfo {title} {Fundamental accuracy-resolution trade-off for timekeeping devices},\ }\href {https://doi.org/10.1103/PhysRevLett.131.220201} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {131}},\ \bibinfo {pages} {220201} (\bibinfo {year} {2023})},\ \Eprint {https://arxiv.org/abs/2301.05173} {arXiv:2301.05173 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Jordan}(2017)}]{Jordan2017FastComputation}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~P.}\ \bibnamefont {Jordan}},\ }\bibfield  {title} {\bibinfo {title} {Fast quantum computation at arbitrarily low energy},\ }\href {https://doi.org/10.1103/PhysRevA.95.032305} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {95}},\ \bibinfo {pages} {032305} (\bibinfo {year} {2017})},\ \Eprint {https://arxiv.org/abs/1701.01175} {arXiv:1701.01175 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Garc{\'\i}a-Pintos}\ \emph {et~al.}(2020)\citenamefont {Garc{\'\i}a-Pintos}, \citenamefont {Hamma},\ and\ \citenamefont {del Campo}}]{GarciaPintos2020BatteryPower}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~P.}\ \bibnamefont {Garc{\'\i}a-Pintos}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Hamma}},\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {del Campo}},\ }\bibfield  {title} {\bibinfo {title} {Fluctuations in extractable work bound the charging power of quantum batteries},\ }\href {https://doi.org/10.1103/PhysRevLett.125.040601} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {125}},\ \bibinfo {pages} {040601} (\bibinfo {year} {2020})},\ \Eprint {https://arxiv.org/abs/1909.03558} {arXiv:1909.03558 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Juli{\`a}-Farr{\'e}}\ \emph {et~al.}(2020)\citenamefont {Juli{\`a}-Farr{\'e}}, \citenamefont {Salamon}, \citenamefont {Riera}, \citenamefont {Bera},\ and\ \citenamefont {Lewenstein}}]{JuliaFarre2020Battery}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Juli{\`a}-Farr{\'e}}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Salamon}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Riera}}, \bibinfo {author} {\bibfnamefont {M.~N.}\ \bibnamefont {Bera}},\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Lewenstein}},\ }\bibfield  {title} {\bibinfo {title} {Bounds on the capacity and power of quantum batteries},\ }\href {https://doi.org/10.1103/PhysRevResearch.2.023113} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Research}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {023113} (\bibinfo {year} {2020})},\ \Eprint {https://arxiv.org/abs/1811.04005} {arXiv:1811.04005 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Campaioli}\ \emph {et~al.}(2024)\citenamefont {Campaioli}, \citenamefont {Gherardini}, \citenamefont {Quach}, \citenamefont {Polini},\ and\ \citenamefont {Andolina}}]{Campaioli2024Colloquium}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Campaioli}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Gherardini}}, \bibinfo {author} {\bibfnamefont {J.~Q.}\ \bibnamefont {Quach}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Polini}},\ and\ \bibinfo {author} {\bibfnamefont {G.~M.}\ \bibnamefont {Andolina}},\ }\bibfield  {title} {\bibinfo {title} {Colloquium: Quantum batteries},\ }\href {https://doi.org/10.1103/RevModPhys.96.031001} {\bibfield  {journal} {\bibinfo  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume} {96}},\ \bibinfo {pages} {031001} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cusumano}\ and\ \citenamefont {Rudnicki}(2021)}]{Cusumano2021Comment}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Cusumano}}\ and\ \bibinfo {author} {\bibfnamefont {{\L}.}~\bibnamefont {Rudnicki}},\ }\bibfield  {title} {\bibinfo {title} {Comment on ``fluctuations in extractable work bound the charging power of quantum batteries''},\ }\href {https://doi.org/10.1103/PhysRevLett.127.028901} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {127}},\ \bibinfo {pages} {028901} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Shrimali}\ \emph {et~al.}(2024)\citenamefont {Shrimali}, \citenamefont {Panda},\ and\ \citenamefont {Pati}}]{Shrimali2024StrongerSpeedLimit}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Shrimali}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Panda}},\ and\ \bibinfo {author} {\bibfnamefont {A.~K.}\ \bibnamefont {Pati}},\ }\bibfield  {title} {\bibinfo {title} {Stronger speed limit for observables: Tight bound for the capacity of entanglement, the modular hamiltonian and the charging of a quantum battery},\ }\href {https://doi.org/10.1103/PhysRevA.110.022425} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {110}},\ \bibinfo {pages} {022425} (\bibinfo {year} {2024})},\ \Eprint {https://arxiv.org/abs/2404.03247} {arXiv:2404.03247 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {H{\"o}rnedal}\ and\ \citenamefont {S{\"o}nnerborn}(2023{\natexlab{b}})}]{Hornedal2023ClosedSystems}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {H{\"o}rnedal}}\ and\ \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {S{\"o}nnerborn}},\ }\bibfield  {title} {\bibinfo {title} {Closed systems refuting quantum-speed-limit hypotheses},\ }\href {https://doi.org/10.1103/PhysRevA.108.052421} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {108}},\ \bibinfo {pages} {052421} (\bibinfo {year} {2023}{\natexlab{b}})},\ \Eprint {https://arxiv.org/abs/2303.09423} {arXiv:2303.09423 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chen}\ \emph {et~al.}(2023)\citenamefont {Chen}, \citenamefont {Lucas},\ and\ \citenamefont {Yin}}]{Chen2023LocalitySpeedLimits}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.-F.}\ \bibnamefont {Chen}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Lucas}},\ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Yin}},\ }\bibfield  {title} {\bibinfo {title} {Speed limits and locality in many-body quantum dynamics},\ }\href {https://doi.org/10.1088/1361-6633/acfaae} {\bibfield  {journal} {\bibinfo  {journal} {Rep. Prog. Phys.}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo {pages} {116001} (\bibinfo {year} {2023})},\ \Eprint {https://arxiv.org/abs/2303.07386} {arXiv:2303.07386 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Herb}\ and\ \citenamefont {Degen}(2024)}]{HerbDegen2024Sensing}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Herb}}\ and\ \bibinfo {author} {\bibfnamefont {C.~L.}\ \bibnamefont {Degen}},\ }\bibfield  {title} {\bibinfo {title} {Quantum speed limit in quantum sensing},\ }\href {https://doi.org/10.1103/PhysRevLett.133.210802} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {133}},\ \bibinfo {pages} {210802} (\bibinfo {year} {2024})},\ \Eprint {https://arxiv.org/abs/2406.18348} {arXiv:2406.18348 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Budiyono}\ \emph {et~al.}(2026)\citenamefont {Budiyono}, \citenamefont {Moody}, \citenamefont {Prihadi}, \citenamefont {Rahmawati},\ and\ \citenamefont {Deffner}}]{Budiyono2026QSLObservables}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Budiyono}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Moody}}, \bibinfo {author} {\bibfnamefont {H.~L.}\ \bibnamefont {Prihadi}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Rahmawati}},\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Deffner}},\ }\bibfield  {title} {\bibinfo {title} {Quantum speed limit for observables from quantum asymmetry},\ }\href {https://doi.org/10.1103/tfnt-58sw} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {113}},\ \bibinfo {pages} {042450} (\bibinfo {year} {2026})},\ \Eprint {https://arxiv.org/abs/2511.16526} {arXiv:2511.16526 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chau}\ and\ \citenamefont {Zeng}(2024)}]{ChauZeng2024UnifyingQSL}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~F.}\ \bibnamefont {Chau}}\ and\ \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Zeng}},\ }\bibfield  {title} {\bibinfo {title} {A unifying quantum speed limit for time-independent {H}amiltonian evolution},\ }\href {https://doi.org/10.1088/1751-8121/ad4c32} {\bibfield  {journal} {\bibinfo  {journal} {Journal of Physics A: Mathematical and Theoretical}\ }\textbf {\bibinfo {volume} {57}},\ \bibinfo {pages} {235304} (\bibinfo {year} {2024})},\ \Eprint {https://arxiv.org/abs/2310.08813} {arXiv:2310.08813 [quant-ph]} \BibitemShut {NoStop}%
+\end{thebibliography}%

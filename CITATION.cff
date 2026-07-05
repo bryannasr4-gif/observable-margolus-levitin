@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the manuscript below."
+title: "Numerical verification and manuscript for: A Margolus–Levitin speed limit for observables"
+type: software
+authors:
+  - family-names: Nasr
+    given-names: Bryan
+license: MIT
+repository-code: "https://github.com/bryannasr4-gif/observable-margolus-levitin"
+date-released: "2026-07-05"
+keywords:
+  - quantum speed limits
+  - Margolus–Levitin bound
+  - observables
+  - quantum information
+preferred-citation:
+  type: article
+  title: "A Margolus–Levitin speed limit for observables: mean energy bounds expectation-value change quadratically"
+  authors:
+    - family-names: Nasr
+      given-names: Bryan
+  year: 2026
+  notes: "Preprint."

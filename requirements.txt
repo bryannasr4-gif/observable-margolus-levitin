@@ -1,0 +1,7 @@
+# Numerical verification dependencies.
+# Reproduced with the versions noted; the floors below are conservative.
+numpy>=1.24        # tested: 2.5.0
+scipy>=1.10        # tested: 1.18.0
+mpmath>=1.3        # tested: 1.3.0
+sympy>=1.12        # used by theory_core.py
+matplotlib>=3.7    # used by make_figures.py (figure regeneration only)

@@ -1,0 +1,37 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# --- Secrets: never commit ---
+.env
+.env.*
+.secrets/
+*.key
+
+# --- LaTeX build artifacts (main.tex, refs.bib, main.bbl and figs/ ARE tracked) ---
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/*.run.xml
+paper/*Notes.bib
+paper/c*.log
+paper/compile*.log
+paper/bibtex.log
+
+# --- OS / editor junk ---
+.DS_Store
+__MACOSX/
+Thumbs.db
+*~
+.idea/
+.vscode/

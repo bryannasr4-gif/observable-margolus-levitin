@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "hbar": 1,
+    "E0": 0,
+    "generated_by": "numerics/make_results.py",
+    "constant": "C_true = 1/(8K), K=sin x*, tan(x*/2)=x*"
+  },
+  "constants": {
+    "x_star": 2.331122370414423,
+    "K_eq_sin_xstar": 0.7246113537767085,
+    "C_true": 0.1725062674611626,
+    "C_true_closed_forms": {
+      "1/(8K)": 0.1725062674611626,
+      "1/(8 sin x*)": 0.1725062674611626,
+      "x*/(8(1-cos x*))": 0.1725062674611626,
+      "(1+x*^2)/(16 x*)": 0.1725062674611626
+    },
+    "C_old_phase_restricted": 0.18555147172183603,
+    "C_old_over_C_true": 1.075621624956962,
+    "linear_recovery_const_1/(4K)": 0.34501253492232525,
+    "linear_recovery_eq_2_C_true": true,
+    "8K": 5.796890830213668
+  },
+  "nogo": {
+    "loglog_slope_P_vs_Delta_saturating_family": 2.017,
+    "expected": 2,
+    "ratio_P_over_Delta2_at_smallest_theta": 0.17261413,
+    "ref_independent": "explore_observable_ML.py slope 1.9998"
+  },
+  "saturation_pure": {
+    "freephase_inf_ratio": 0.172506268,
+    "target_C_true": 0.17250626746116263
+  },
+  "mixed": {
+    "random_min_ratio": 0.19211819,
+    "violations_below_C_true": 0,
+    "genuine_mixed_floor_wmin0.15": 0.633273,
+    "note": "full proof + 16000-config search: numerics/ext_mixed_check.py; purification: ext_mixed_purification_check.py"
+  },
+  "structured": {
+    "rank1_inf_ratio": 0.172506268,
+    "rank1_target_C_true": 0.17250626746116263,
+    "real_restricted_inf": 0.185551472,
+    "real_restricted_target_C_old": 0.18555147172183603,
+    "eigenvector_linear_inf_rlin": 0.345071,
+    "eigenvector_target_1/(4K)": 0.34501253492232525,
+    "note": "rank-1/real/banded + ground-gapped: numerics/struct_verify_independent.py, struct_multifreq.py"
+  },
+  "battery": {
+    "saturation_R": 0.17264065,
+    "target_C_true": 0.17250626746116263,
+    "hostile_min_R": 0.2181385,
+    "note": "values from numerics/app_battery_check.py (seed 20260623): saturation R->0.17264065 (->C_true as theta->0), hostile min R=0.2181385 over 4000 trials, 0 violations"
+  },
+  "global_optimizer_floor": {
+    "value": 0.17250656,
+    "d_range": "2..7",
+    "ref": "numerics/optimize_constant.py",
+    "note": ">= C_true, approached from above"
+  }
+}

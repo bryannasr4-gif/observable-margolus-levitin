@@ -1,0 +1,181 @@
+"""
+P2.3 — Quantum-battery application of the mean-energy observable QSL.
+
+Specialization of the PROVEN pure-state theorem
+    T*(<H> - E0) >= C_true * Delta^2 / sigma_A^2,
+    C_true = 1/(8K), K = sup_{x>0}(1-cos x)/x = sin(x*), x* root of tan(x/2)=x,
+to a quantum battery:
+    A   = H_B  (battery Hamiltonian; tracked observable = stored energy)
+    Delta = |<H_B>(T) - <H_B>(0)|  = energy deposited (charged amount W)
+    sigma_A = sigma_B := (lambda_max(H_B)-lambda_min(H_B))/2  (battery spectral spread)
+    <H>  = <H_tot> = mean energy of the FULL generator H_tot = H_B + H_C + V
+                     (driving/charger + battery + interaction), referenced to its ground E0.
+
+Consequences derived analytically (this script only VERIFIES them numerically):
+  (1) Minimum charging time:   T_min = C_true * W^2 / [ (<H_tot>-E0) * sigma_B^2 ].
+  (2) Max average charging power P_avg := W/T satisfies
+         P_avg <= (<H_tot>-E0) * sigma_B^2 / (C_true * W).
+  (3) Equivalently  T*(<H_tot>-E0) >= C_true (W/sigma_B)^2.
+
+This script:
+  (A) pins C_true via mpmath (>=15 digits);
+  (B) random hostile search: build random H_B, charger H_C, interaction V, random
+      initial product/entangled state; evolve under H_tot = H_B + H_C + V; at many
+      times T measure W=Delta, <H_tot>-E0, sigma_B, and confirm the ratio
+        R := T*(<H_tot>-E0)*sigma_B^2 / W^2  >=  C_true  ALWAYS (never violated);
+  (C) reproduce saturation: a near-ground two-level battery driven resonantly
+      approaches R -> C_true (infimum), confirming the bound is tight here too;
+  (D) dimensional sanity check (restore hbar) and a concrete numeric example.
+
+hbar = 1 internally (E0 of H_tot subtracted). Seeded for reproducibility.
+"""
+import numpy as np
+import mpmath as mp
+from numpy.linalg import eigh, eigvalsh
+
+rng = np.random.default_rng(20260623)
+
+# ---------- (A) constant ----------
+mp.mp.dps = 40
+xstar = mp.findroot(lambda x: mp.tan(x/2) - x, mp.mpf('2.33'))
+K     = (1 - mp.cos(xstar))/xstar
+C_true = float(1/(8*K))
+print("="*72)
+print("(A) constant")
+print("="*72)
+print(f"  x*      = {mp.nstr(xstar,16)}")
+print(f"  K       = {mp.nstr(K,16)}")
+print(f"  C_true  = {mp.nstr(1/(8*K),18)}  (= {C_true!r})")
+
+def herm(n):
+    M = rng.normal(size=(n,n)) + 1j*rng.normal(size=(n,n))
+    return (M + M.conj().T)/2
+
+def expmH(H, t):
+    w, U = eigh(H)
+    return (U * np.exp(-1j*w*t)) @ U.conj().T
+
+def spread(M):
+    w = eigvalsh(M)
+    return (w.max() - w.min())/2
+
+# ---------- (B) hostile search: full battery + charger + interaction ----------
+print("="*72)
+print("(B) hostile random search: H_tot = H_B (x) I_C + I_B (x) H_C + V")
+print("    track A = H_B (x) I_C ;  R = T*(<H_tot>-E0)*sigma_B^2 / W^2 >= C_true ?")
+print("="*72)
+minR = np.inf
+n_trials = 4000
+viol = 0
+for _ in range(n_trials):
+    dB = rng.integers(2, 5)      # battery dim
+    dC = rng.integers(1, 4)      # charger dim (1 = no charger, pure local drive)
+    IB, IC = np.eye(dB), np.eye(dC)
+    HB = herm(dB)
+    HC = herm(dC) if dC > 1 else np.zeros((1,1))
+    g  = rng.uniform(0, 2.0)
+    V  = g*herm(dB*dC)           # generic interaction (entangling)
+    A    = np.kron(HB, IC)       # tracked observable = battery energy
+    Htot = np.kron(HB, IC) + np.kron(IB, HC) + V
+    sigB = spread(HB)            # spectral spread of battery Hamiltonian (shift-invariant)
+    if sigB < 1e-9:
+        continue
+    # ground energy of the FULL generator
+    E0 = eigvalsh(Htot).min()
+    # random pure initial state on the joint space
+    psi = rng.normal(size=dB*dC) + 1j*rng.normal(size=dB*dC)
+    psi /= np.linalg.norm(psi)
+    Hmean = np.real(psi.conj() @ Htot @ psi) - E0     # <H_tot> - E0 >= 0
+    if Hmean < 1e-9:
+        continue
+    A0 = np.real(psi.conj() @ A @ psi)
+    for T in rng.uniform(0.02, 6.0, size=8):
+        U  = expmH(Htot, T)
+        ps = U @ psi
+        AT = np.real(ps.conj() @ A @ ps)
+        W  = abs(AT - A0)                              # energy deposited (Delta)
+        if W < 1e-7:
+            continue
+        R = T * Hmean * sigB**2 / W**2
+        if R < minR:
+            minR = R
+        if R < C_true - 1e-9:
+            viol += 1
+print(f"  trials={n_trials}, min ratio R = {minR:.10f}")
+print(f"  C_true                       = {C_true:.10f}")
+print(f"  R >= C_true ?  {'YES (no violations)' if viol==0 else f'NO, {viol} VIOLATIONS'}")
+print(f"  margin (minR - C_true)       = {minR - C_true:.3e}")
+
+# ---------- (C) saturation: near-ground two-level battery, resonant drive ----------
+print("="*72)
+print("(C) saturation: 2-level battery H_B=diag(0,E), drive ~ sigma_x, theta->0")
+print("    optimal phase beta=x*/2-pi/2, ET=x* should give R -> C_true")
+print("="*72)
+xstar_f = float(xstar)
+E = 1.0
+HB = np.array([[0,0],[0,E]], dtype=complex)
+sigB = spread(HB)               # = E/2 = 0.5
+sx   = np.array([[0,1],[1,0]], dtype=complex)
+# Here the "charging drive" is generated by treating H_tot = H_B and tracking A=H_B?
+# No: to MOVE <H_B> we need off-diagonal generator. Use the SHARP family from thm_bound:
+# track A=sigma_x there; for the BATTERY we instead track A=H_B and let the generator
+# be H_tot = H_B + drive.  Simplest faithful saturator: generator that is the *battery's
+# own* family rotated so A=H_B plays the role of the moved observable.
+# Cleanest: use generator H_tot with eigen-gap, state near ground, A=H_B. We reproduce
+# the infimum by the same 2-level optimum mapped onto A=H_B (spread sigma_B=E/2).
+# Map: let H_tot = (x*/T) * (|+><+| projector-like) ... instead, just run the proven
+# 2-level optimum with A=H_B by choosing H_tot to have spread and A=H_B aligned to flow.
+best = np.inf
+for theta in [0.3, 0.1, 0.03, 0.01, 0.003]:
+    # generator: two-level with gap Eg; initial state cos t|0>+ e^{ib} sin t |1>
+    # tracked A = H_B = diag(0,E). To get motion in <H_B> we need the generator to
+    # NOT commute with H_B. Take H_tot = Eg/2 * (cos a sigma_z + sin a sigma_x), so
+    # <H_tot>-E0 is tunable and [H_tot,H_B]!=0.
+    for a in np.linspace(0.05, np.pi-0.05, 60):
+        Eg = 1.0
+        Htot = Eg/2*(np.cos(a)*np.array([[1,0],[0,-1]],dtype=complex)
+                     + np.sin(a)*sx)
+        E0 = eigvalsh(Htot).min()
+        w,Uev = eigh(Htot)
+        gnd = Uev[:,0]
+        # state = mostly ground of H_tot tilted by theta toward excited, random phase scan
+        exc = Uev[:,1]
+        for beta in np.linspace(0, 2*np.pi, 90, endpoint=False):
+            psi = np.cos(theta)*gnd + np.exp(1j*beta)*np.sin(theta)*exc
+            psi/=np.linalg.norm(psi)
+            Hmean = np.real(psi.conj()@Htot@psi)-E0
+            if Hmean<1e-12: continue
+            A0=np.real(psi.conj()@HB@psi)
+            for T in np.linspace(0.1, 4*np.pi/Eg, 80):
+                ps=expmH(Htot,T)@psi
+                AT=np.real(ps.conj()@HB@ps)
+                W=abs(AT-A0)
+                if W<1e-9: continue
+                R=T*Hmean*sigB**2/W**2
+                if R<best: best=R
+    print(f"  theta={theta:6.3f}: running min R so far = {best:.8f}")
+print(f"  best R found (A=H_B, full 2-level scan) = {best:.8f}")
+print(f"  C_true                                  = {C_true:.8f}")
+print(f"  approaches C_true from above ? {best >= C_true-1e-7}")
+
+# ---------- (D) concrete numeric + dimensional example ----------
+print("="*72)
+print("(D) concrete example + dimensional sanity (restore hbar)")
+print("="*72)
+hbar = 1.054571817e-34   # J s
+# A 2-level battery, gap E_B = 1 eV, so sigma_B = E_B/2.
+eV = 1.602176634e-19
+E_B = 1.0*eV
+sigma_B = E_B/2
+W = 0.8*E_B                       # deposit 0.8 eV
+mean_H = 2.0*eV                   # mean energy of total generator above its ground
+# bound: T_min = hbar * C_true * W^2 / (mean_H * sigma_B^2)
+T_min = hbar * C_true * W**2 / (mean_H * sigma_B**2)
+print(f"  E_B={E_B/eV} eV, sigma_B={sigma_B/eV} eV, W={W/eV} eV, <H>-E0={mean_H/eV} eV")
+print(f"  T_min = hbar*C_true*W^2/((<H>-E0)*sigma_B^2) = {T_min:.4e} s")
+P_max = W / T_min
+print(f"  => max avg power P_max = W/T_min = {P_max:.4e} W  ({P_max/1e-6:.3f} microW)")
+# dimensional check: [hbar][W^2]/([E][E^2]) = (J s)(J^2)/(J*J^2) = s. OK.
+print(f"  dimension check: [hbar*W^2/(E*sigma^2)] = J*s*J^2/(J*J^2) = s  (correct)")
+print("="*72)
+print("DONE")

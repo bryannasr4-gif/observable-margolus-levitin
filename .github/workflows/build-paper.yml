@@ -1,0 +1,32 @@
+name: build-paper
+
+# Compiles the manuscript on every change so the PDF can never silently break.
+on:
+  push:
+    paths:
+      - 'paper/**'
+      - '.github/workflows/build-paper.yml'
+  pull_request:
+    paths:
+      - 'paper/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile main.tex (RevTeX 4-2)
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: paper
+          root_file: main.tex
+          latexmk_use_xelatex: false
+
+      - name: Upload compiled PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-pdf
+          path: paper/main.pdf
+          if-no-files-found: error
