@@ -105,8 +105,10 @@ sampled configurations.
 
 ## Building the paper
 
-No local LaTeX? The GitHub Actions workflow ([`.github/workflows/build-paper.yml`](.github/workflows/build-paper.yml))
-compiles `paper/main.tex` on every push and uploads the PDF as a build artifact.
+The latest compiled manuscript is committed at [`paper/main.pdf`](paper/main.pdf). The GitHub Actions
+workflow ([`.github/workflows/build-paper.yml`](.github/workflows/build-paper.yml)) also recompiles
+`paper/main.tex` on every push and uploads the PDF as a build artifact, so the source and the PDF stay
+in sync.
 
 Locally, with a TeX distribution that includes RevTeX 4-2:
 
