@@ -10,55 +10,38 @@
 This repository contains the manuscript and the complete, seeded numerical verification suite for a
 quantum speed limit on **observables** powered by the **mean energy**.
 
-> ### Correction notice (August 2026) — novelty re-scoped, one formula corrected
+> ### Note on positioning (August 2026)
 >
-> An external prior-art and correctness audit found that **this repository previously over-scoped its
-> novelty**. The mathematics is sound, but two of the claims made for it were not. Both are corrected
-> here, and the manuscript is being revised to match. Nothing about the *validity* of the bound has
-> changed.
+> An earlier version of this README carried a "correction notice" retracting several attribution and
+> formula claims. **That notice was itself in error and has been withdrawn:** it described a manuscript
+> that does not exist. `paper/main.tex` has been unchanged since the first commit (2026-07-05), and it
+> already credits every source the notice said was missing, and already prints the Sec. V constant in
+> the form the notice proposed as the fix. The withdrawn items are listed below so the record is clear.
 >
-> **1. The constant $C_\star$ is not new.** $x_\star = 2.33112237\ldots$ is *bit-identical* to the
-> $q\to 0$ (orthogonality) member of the tangent-line optimization of **Giovannetti, Lloyd & Maccone,
-> PRA 67, 052109 (2003)** — it is the root of $1-\cos y = y\sin y$, and $K=\sin x_\star = 0.724611\ldots$
-> is the standard tangent-to-cosine constant of the generalized-ML literature (used off-the-shelf as
-> $\cos x \ge 1-\alpha x$, $\alpha \approx 0.724$, in Carabba–Hörnedal–del Campo, Quantum 6, 884 (2022)).
-> Quoting it to 52 digits as a fresh discovery was wrong. *(Verify:
-> `mpmath.findroot(lambda y: 1-cos(y)-y*sin(y), 2.33)` → $x_\star$.)*
+> **What the manuscript already does (verifiable in `paper/main.tex`):**
 >
-> **2. The proof route is inherited.** The two-step derivation and the purification-to-mixed argument
-> follow the statistical-distance route to Margolus–Levitin of **Jones & Kok, PRA 82, 022107 (2010)**,
-> corrected by **Zwierz, PRA 86, 016101 (2012)**; the underlying inequality traces to **Bhattacharyya,
-> J. Phys. A 16, 2993 (1983)**. Placing a bounded observable on the left via Hölder — converting a state
-> distinguishability measure into an expectation-value swing — is a genuine repackaging, but it is a
-> repackaging, and these references were absent from the bibliography.
+> - **Credits $C_\star$ to Giovannetti–Lloyd–Maccone.** The abstract calls the trade-off curve "the
+>   observable analog of the Giovannetti–Lloyd–Maccone curve for states," and Sec. IV states: *"This
+>   tangent-line constant is the orthogonality ($q\to0$) member of the generalized Margolus–Levitin
+>   construction of Giovannetti, Lloyd, and Maccone."* The constant was never claimed as new.
+> - **Credits the inherited proof route, and names its own new step:** *"follows the statistical-distance
+>   derivation of the Margolus–Levitin bound by Jones and Kok (corrected by Zwierz) and the
+>   survival-amplitude inequality of Bhattacharyya; the new step is to place a bounded observable on the
+>   left via Hölder."* All three references are in `refs.bib` and cited.
+> - **Engages Hörnedal–Sönnerborn (PRA 108, 052421)** on exactly the relevant point: the
+>   Margolus–Levitin bound does not extend to closed systems with time-dependent generators, which is
+>   why the time-independent-$H$ restriction here is essential.
+> - **Prints the Sec. V constant correctly**, with the variable defined in the same sentence:
+>   $C_{\beta=0} = 1/(16\,\phi_\star\sin^2\phi_\star) = \phi_\star/(4(1-\cos\phi_\star)^2) = 0.185551\ldots$,
+>   where $\phi_\star = 2.78650\ldots$ is the smallest positive root of $1-\cos x = 2x\sin x$. The
+>   erroneous formula quoted by the withdrawn notice appears nowhere in the manuscript.
 >
-> **3. Adjacent geometry already in the literature.** **Hörnedal & Sönnerborn, PRA 108, 052421 (2023)**
-> analyze the same near-ground two-level family and prove that no ML-type bound survives for *closed*
-> (time-dependent-$H$) systems. That is a different setting and does **not** contradict the result here
-> — it is why the time-independent-$H$ restriction is essential — but it must be engaged rather than
-> omitted.
->
-> **4. What is actually new.** The genuinely original kernel is the **no-go theorem** (the optimal
-> mean-energy exponent of $\Delta$ is exactly **two**, so no state-independent *linear* mean-energy
-> bound exists) together with the **eigenvector dichotomy** (the quadratic law degrades to linear
-> exactly when the initial state is an eigenvector of $A$). That is a real contribution. It is
-> *solid-incremental*, not a landmark, and the earlier framing of an "empty corner" oversold it.
->
-> **5. Erratum, Sec. V.** The phase-restricted constant was printed as
-> $C_{\beta=0} = s_\star^2/(8\sqrt{2s_\star-1}) = 0.185551$. **The value 0.185551 is correct; the
-> formula is not** — it evaluates to $0.453865\ldots$, and $s_\star$ was never defined. The correct
-> closed form is
-> $$C_{\beta=0} \;=\; \frac{1}{16\,s_\star \sin^2 s_\star} \;=\; \frac{s_\star}{4\,(1-\cos s_\star)^2} \;=\; 0.18555147\ldots,$$
-> where $s_\star = 2.78649815\ldots$ is the root of $1-\cos x = 2x\sin x$ — a *different* transcendental
-> equation from $x_\star$'s. Verified three ways (both closed forms, and direct minimization of
-> $x/[4(1-\cos x)^2]$, which attains $0.18555147$ at $x = 2.786496$).
->
-> **6. The applications do not currently bind.** The autonomous-clock and quantum-battery sections are
-> illustrative, not binding constraints on any existing platform. They should be read as such.
->
-> This notice follows an external prior-art and correctness audit; every item above was
-> independently re-verified before being published here, and its numerical claims are reproducible with
-> the one-line recipes given.
+> **What is genuinely worth restating.** The contribution claimed here is the **no-go theorem** (the
+> optimal state-independent mean-energy exponent of $\Delta$ is exactly **two**) together with the
+> **eigenvector dichotomy**. $C_\star$, the tangent-line lemma, and the proof route are inherited and
+> cited as such. One phrasing is softened: describing the (mean-energy $\times$ observable) corner as
+> "empty" overstates it, since Hörnedal–Sönnerborn analyze an adjacent near-ground two-level family in
+> the time-dependent-$H$ setting. The bound, the constant, and every number in the paper are unaffected.
 
 ---
 
@@ -75,7 +58,7 @@ C_\star = \frac{1}{8\sin x_\star} = 0.172506267461\ldots$$
 
 where $x_\star = 2.331122370\ldots$ is the smallest positive root of $\tan(x/2)=x$.
 
-**What is new here** (see the correction notice above for what is not):
+**What is new here** (see the positioning note above for what is inherited):
 
 - **A no-go theorem — the original kernel.** There is *no* state-independent **linear** mean-energy
   bound on $\Delta$; the optimal mean-energy exponent of $\Delta$ is exactly **two**. The bound above
@@ -188,11 +171,10 @@ This is a **preprint** — a self-contained, independently cross-checked manuscr
 been peer-reviewed or submitted to a journal. Feedback and corrections are welcome via the issue
 tracker.
 
-**Revision in progress (August 2026).** The README above has been corrected; `paper/main.tex` has
-**not yet** been updated to match, so the manuscript still carries the over-scoped novelty framing, the
-missing citations (GLM 2003, Jones–Kok 2010, Zwierz 2012, Bhattacharyya 1983, Hörnedal–Sönnerborn 2023)
-and the Sec. V formula erratum described in the correction notice. **Where the manuscript and this
-README disagree, the README is current.** Do not cite the Sec. V closed form from the PDF.
+**Status of the manuscript (August 2026).** `paper/main.tex` and the committed `paper/main.pdf` are
+current and correct as they stand; the withdrawn correction notice described errors the manuscript does
+not contain. The only pending revision is the softened "empty corner" phrasing noted above. The PDF may
+be cited as-is.
 
 ## Citation
 
