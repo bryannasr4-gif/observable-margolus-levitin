@@ -1,12 +1,12 @@
 """
-Stage 1 analytic core for:
+Analytic core for:
   A Margolus-Levitin (mean-energy) speed limit for observables.
 
-  !!! CORRECTION (Stage 1 result): the constant 0.18555147 derived below is the
+  !!! CORRECTION: the constant 0.18555147 derived below is the
   PHASE-RESTRICTED optimum (real amplitudes, A=sigma_x, zero relative phase ->
   start at a turning point). It is NOT the universal constant. The sharp universal
   constant is  C_true = 1/(8 sin x*) = 0.17250626746116262  (x* = root of
-  tan(x/2)=x). See numerics/theory_core_v2.py and notes/thm_constant.md.
+  tan(x/2)=x). See numerics/theory_core_v2.py.
   The NO-GO content below (P/Delta -> 0) is unaffected.
 
 Establishes rigorously, for the exactly-solvable TWO-LEVEL family

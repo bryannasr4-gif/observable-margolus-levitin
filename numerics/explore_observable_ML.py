@@ -1,5 +1,5 @@
 """
-Step A -- approach-simulation / de-risking for the project:
+Approach simulation / de-risking for the project:
   "A Margolus-Levitin (mean-energy) quantum speed limit for observables"
 
 Goal of THIS script (ground-truth numerics, hbar = 1, ground energy E0 = 0):

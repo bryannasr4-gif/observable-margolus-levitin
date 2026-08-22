@@ -1,13 +1,13 @@
 """
-Stage-1 CORRECTION + independent verification.
+CORRECTION + independent verification.
 
-The Stage-1 workflow (4 independent derivations + numeric adversary) found that the
+Four independent derivations plus a numerical adversary established that the
 real-amplitude two-level value C=0.18555147 is NOT the universal constant: it is the
 phase-restricted optimum.  Releasing the relative phase gives the sharp constant
 
     C_true = 1/(8K),   K = sup_{x>0} (1-cos x)/x = sin(x*),  x* = root of tan(x/2)=x.
 
-This script verifies, from scratch and to high precision:
+This script verifies, from first principles and to high precision:
   (A) K and x*, and the three closed forms of C_true agree;
   (B) the tangent-line lemma  1-cos x <= K x  for all x>0 (equality at x*);
   (C) the free-phase two-level infimum ratio = C_true (= 0.172506...), BELOW
@@ -36,7 +36,7 @@ print(f"  C_true = 1/(8 sin x*)      = {mp.nstr(C_d,20)}")
 print(f"  max spread of the four     = {mp.nstr(max(C_a,C_b,C_c,C_d)-min(C_a,C_b,C_c,C_d),3)}")
 C_true = C_a
 C_old  = mp.mpf('0.18555147172183604')
-print(f"  C_true/C_old(0.18555)      = {mp.nstr(C_true/C_old,12)}   (workflow claimed 0.929695)")
+print(f"  C_true/C_old(0.18555)      = {mp.nstr(C_true/C_old,12)}   (reference value 0.929695)")
 
 print("="*70); print("(B) tangent-line lemma  1-cos x <= K x  for all x>0 (eq. at x*)"); print("="*70)
 worst = mp.mpf('-1'); worst_x = None

@@ -1,5 +1,5 @@
 """
-P3.1 — Consolidated, seeded numerical suite -> numerics/results.json
+Consolidated, seeded numerical suite -> numerics/results.json
 
 Single reproducible entry point that pins every number in the paper:
   - constants (mpmath, >=15 digits): x*, K, C_true (4 closed forms), C_old, 1/(4K), 8K
@@ -11,7 +11,7 @@ Single reproducible entry point that pins every number in the paper:
   - battery: saturation R -> C_true, hostile min R
   - global optimizer floor (cross-ref optimize_constant.py)
 
-Run:  .venv/bin/python -u numerics/make_results.py
+Run: python -u numerics/make_results.py
 hbar=1, E0=0.  Fixed seeds for reproducibility.
 """
 import json, numpy as np, mpmath as mp

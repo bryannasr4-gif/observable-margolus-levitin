@@ -1,7 +1,7 @@
 """
-P2.1 CRUX: ground-dominated infimum for rank-1 ground coupling, MULTI-FREQUENCY.
+CRUX: ground-dominated infimum for rank-1 ground coupling, MULTI-FREQUENCY.
 
-Derivation (see ext_structured.md):  state |psi> = c0|0> + sqrt(eps) sum_k a_k|k>,
+Derivation:  state |psi> = c0|0> + sqrt(eps) sum_k a_k|k>,
 A = |0><v|+|v><0|, v = sum_k v_k|k>, ||a||=||v||=1, H=diag(0,E1,..),  eps->0.
 
   ratio r(T) = T * Ebar / ( 4 * | Re sum_k a_k v_k^* (e^{-i E_k T} - 1) |^2 ),

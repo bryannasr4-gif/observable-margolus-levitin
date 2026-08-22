@@ -42,11 +42,11 @@ python -u numerics/make_figures.py         # regenerates paper/figs/*.pdf
 
 ## Notes
 
-- `theory_core.py` is the original Stage-1 script and reports the **phase-restricted** constant
+- `theory_core.py` is the original first-pass script and reports the **phase-restricted** constant
   `C_old = 0.18555147…`; the free relative phase lowers it to the sharp `C⋆ = 0.17250627…`
   (see `theory_core_v2.py` for the correction). Both values, and their `7.56%` ratio, are intentional
   and documented — `C_old` is the `β=0` sub-optimum quoted in §V.
 - All scripts are self-contained and seeded; expected wall time is seconds to a couple of minutes each
   (`verify_refinements.py` part 3 is the longest at ~a few minutes due to ~4M sampled configurations).
 - Random-search "min ratio ≥ C⋆" results are *stress tests*, not proofs; the bound itself is proved
-  analytically (see `notes/thm_bound.md`, `notes/thm_constant.md`, `notes/ext_mixed.md`).
+  analytically in the manuscript (`paper/main.tex`).

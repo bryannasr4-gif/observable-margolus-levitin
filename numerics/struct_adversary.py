@@ -1,5 +1,5 @@
 """
-P2.1 ADVERSARIAL: full real-time dynamics (no perturbative reduction).
+ADVERSARIAL check: full real-time dynamics (no perturbative reduction).
 Try hard to push the ratio r = T*<H>*sigma_A^2/Delta^2 BELOW C_true using
 rank-1 ground-coupling A = |0><v|+|v><0| with v a superposition of MANY excited
 levels at GENERIC energies, full (not ground-dominated) states, optimal phases.

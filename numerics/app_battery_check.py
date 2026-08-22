@@ -1,5 +1,5 @@
 """
-P2.3 — Quantum-battery application of the mean-energy observable QSL.
+Quantum-battery application of the mean-energy observable QSL.
 
 Specialization of the PROVEN pure-state theorem
     T*(<H> - E0) >= C_true * Delta^2 / sigma_A^2,

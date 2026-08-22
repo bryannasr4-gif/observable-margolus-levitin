@@ -1,5 +1,5 @@
 """
-P2.1: exact improvement law for GROUND-GAPPED A (A couples excited<->excited only),
+Exact improvement law for GROUND-GAPPED A (A couples excited<->excited only),
 and for A whose ground-coupling has a minimum transition gap.
 
 (I) Ground-gapped A: ratio r ~ const/eps as eps=excited population ->0.

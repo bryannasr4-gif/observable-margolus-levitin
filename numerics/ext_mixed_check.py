@@ -1,5 +1,5 @@
 """
-P2.2 — Mixed-state constant: numerical stress test.
+Mixed-state constant: numerical stress test.
 
 CLAIM to test: for ANY density matrix rho on finite dim, time-independent H
 (E0=0), bounded Hermitian A with spectral spread sigma_A=(lmax-lmin)/2,

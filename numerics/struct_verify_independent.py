@@ -1,6 +1,6 @@
 """
-P2.1 — INDEPENDENT re-verification of the structured-observable claims
-(written from scratch, lean; run with python -u for live output).
+INDEPENDENT re-verification of the structured-observable claims
+(run with python -u for live output).
 
 hbar=1, E0=0, sigma_A=(lmax-lmin)/2.
   r_quad := T<H> sigma_A^2 / Delta^2   (general floor: r_quad >= C_true)

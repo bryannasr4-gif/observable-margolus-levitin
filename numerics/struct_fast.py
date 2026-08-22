@@ -1,5 +1,5 @@
 """
-P2.1 FAST targeted verification of the analytic claims.
+FAST targeted verification of the analytic claims.
 
 Claim A (rank-1 ground coupling does NOT improve): inf over multi-frequency
    r = T*Ebar / (4 (Re sum_k a_k v_k^* (e^{-iE_k T}-1))^2)  equals C_true,

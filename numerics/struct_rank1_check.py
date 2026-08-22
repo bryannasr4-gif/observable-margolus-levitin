@@ -1,5 +1,5 @@
 """
-P2.1 structured-A investigation.
+Structured-A investigation.
 
 Question: for A that couples the ground state to the excited space in a rank-1 way,
   A = |0><v| + |v><0|,  v unit, v _|_ |0>  (so spec(A) = {+1, -1, 0,...,0}, sigma_A=1),

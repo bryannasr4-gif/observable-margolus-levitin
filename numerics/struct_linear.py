@@ -1,5 +1,5 @@
 """
-P2.1 LINEAR-RECOVERY test.
+LINEAR-RECOVERY test.
 
 For GROUND-GAPPED A (A_0n = 0, A acts within the excited block), claim:
   (i)  instantaneous LINEAR mean-energy bound:  <H>-E0 >= (Delta_gap/2) * Delta/sigma_A,

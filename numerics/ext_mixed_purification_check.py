@@ -1,6 +1,5 @@
 """
-P2.2 — Purification / Uhlmann route: persistent numeric cross-check
-(replaces the workflow's scratch/ scripts so notes/ext_mixed.md is reproducible).
+Purification / Uhlmann route: persistent numeric cross-check.
 
 Verifies, for random mixed states (hbar=1, E0=0, rho_T=U rho U^dag, U=exp(-iHT)):
   (A) Purification preservation: <H(x)I>_Psi = <H>, sigma_{A(x)I} = sigma_A, Delta' = Delta.

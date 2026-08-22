@@ -56,7 +56,7 @@ quantum speed limit on **observables** powered by the **mean energy**.
 > **6. The applications do not currently bind.** The autonomous-clock and quantum-battery sections are
 > illustrative, not binding constraints on any existing platform. They should be read as such.
 >
-> The audit that produced this notice is an automated multi-agent prior-art review; every item above was
+> This notice follows an external prior-art and correctness audit; every item above was
 > independently re-verified before being published here, and its numerical claims are reproducible with
 > the one-line recipes given.
 

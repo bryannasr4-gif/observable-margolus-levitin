@@ -1,5 +1,5 @@
 """
-P3.3 — Figures for the paper -> paper/figs/*.pdf  (matplotlib Agg, seeded).
+Figures for the paper -> paper/figs/*.pdf  (matplotlib Agg, seeded).
 
 fig1_convergence.pdf : 2-level ratio T<H>sigma_A^2/Delta^2 vs theta, free-phase -> C_true,
                        phase-restricted (beta=0) -> C_old, both from above.
@@ -8,7 +8,7 @@ fig3_trajectory.pdf  : saturating-state <A(t)> trajectory (free-phase: starts at
                        beta=0: starts at a turning point) with Delta and T=x* marked.
 fig4_multid.pdf      : per-dimension min ratio (random + near-ground search) sitting above C_true.
 
-Run: .venv/bin/python -u numerics/make_figures.py
+Run: python -u numerics/make_figures.py
 """
 import numpy as np, mpmath as mp
 import matplotlib
