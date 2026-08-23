@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{33}%
+\begin{thebibliography}{38}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -56,10 +56,11 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
   {Mandelstam}}\ and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
   {Tamm}},\ }\bibfield  {title} {\bibinfo {title} {The uncertainty relation
-  between energy and time in non-relativistic quantum mechanics},\ }\href
-  {https://doi.org/10.1007/978-3-642-74626-0_8} {\bibfield  {journal} {\bibinfo
-   {journal} {J. Phys. (USSR)}\ }\textbf {\bibinfo {volume} {9}},\ \bibinfo
-  {pages} {249} (\bibinfo {year} {1945})}\BibitemShut {NoStop}%
+  between energy and time in non-relativistic quantum mechanics},\ }\href@noop
+  {} {\bibfield  {journal} {\bibinfo  {journal} {J. Phys. (USSR)}\ }\textbf
+  {\bibinfo {volume} {9}},\ \bibinfo {pages} {249} (\bibinfo {year} {1945})},\
+  \bibinfo {note} {reprinted in \emph{Selected Papers} (Springer, Berlin,
+  1991), pp.~115--123}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Margolus}\ and\ \citenamefont
   {Levitin}(1998)}]{MargolusLevitin1998}%
   \BibitemOpen
@@ -157,6 +158,22 @@
   {journal} {Quantum}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages}
   {884} (\bibinfo {year} {2022})},\ \Eprint {https://arxiv.org/abs/2207.05769}
   {arXiv:2207.05769 [quant-ph]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cafaro}\ \emph {et~al.}(2026)\citenamefont {Cafaro},
+  \citenamefont {Redjem}, \citenamefont {Alsing}, \citenamefont {Bahreyni},\
+  and\ \citenamefont {Corda}}]{Cafaro2026FluctuationGrowth}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Cafaro}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Redjem}},
+  \bibinfo {author} {\bibfnamefont {P.~M.}\ \bibnamefont {Alsing}}, \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Bahreyni}},\ and\ \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {Corda}},\ }\bibfield  {title}
+  {\bibinfo {title} {From quantum-mechanical acceleration limits to upper
+  bounds on fluctuation growth of observables in unitary dynamics},\ }\href
+  {https://doi.org/10.1016/j.qrl.2026.05.001} {\bibfield  {journal} {\bibinfo
+  {journal} {Quantum Review Letters}\ }\textbf {\bibinfo {volume} {2}},\
+  \bibinfo {pages} {63} (\bibinfo {year} {2026})},\ \bibinfo {note}
+  {arXiv:2504.00261},\ \Eprint {https://arxiv.org/abs/2504.00261}
+  {arXiv:2504.00261 [quant-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Miao}\ \emph {et~al.}(2025)\citenamefont {Miao},
   \citenamefont {Liu}, \citenamefont {Ning}, \citenamefont {Hu}, \citenamefont
   {Zhang}, \citenamefont {Li},\ and\ \citenamefont {Guo}}]{Miao2025Experiment}%
@@ -251,6 +268,16 @@
   {5}},\ \bibinfo {pages} {043234} (\bibinfo {year} {2023}{\natexlab{a}})},\
   \Eprint {https://arxiv.org/abs/2301.10063} {arXiv:2301.10063 [quant-ph]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Chau}(2023)}]{Chau2023MLalpha}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~F.}\ \bibnamefont
+  {Chau}},\ }\bibfield  {title} {\bibinfo {title} {$\alpha_{>}(\epsilon) =
+  \alpha_{<}(\epsilon)$ for the margolus-levitin quantum speed limit bound},\
+  }\href {https://doi.org/10.1103/PhysRevA.108.052202} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review A}\ }\textbf {\bibinfo {volume}
+  {108}},\ \bibinfo {pages} {052202} (\bibinfo {year} {2023})},\ \Eprint
+  {https://arxiv.org/abs/2305.10101} {arXiv:2305.10101 [quant-ph]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {S{\"o}nnerborn}(2026)}]{Sonnerborn2026MLsaturate}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
@@ -271,6 +298,16 @@
   }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages} {013018} (\bibinfo {year}
   {2024})},\ \bibinfo {note} {arXiv:2305.03190},\ \Eprint
   {https://arxiv.org/abs/2305.03190} {arXiv:2305.03190 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Ishida}\ and\ \citenamefont
+  {Hasegawa}(2025)}]{ishida2025energyinference}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Ishida}}\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Hasegawa}},\ }\href@noop {} {\bibinfo {title} {Energy inference of black-box
+  quantum computers using quantum speed limit}} (\bibinfo {year} {2025}),\
+  \bibinfo {note} {arXiv:2512.15472},\ \Eprint
+  {https://arxiv.org/abs/2512.15472} {arXiv:2512.15472 [quant-ph]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Erker}\ \emph {et~al.}(2017)\citenamefont {Erker},
   \citenamefont {Mitchison}, \citenamefont {Silva}, \citenamefont {Woods},
@@ -459,6 +496,29 @@
   {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {113}},\
   \bibinfo {pages} {042450} (\bibinfo {year} {2026})},\ \Eprint
   {https://arxiv.org/abs/2511.16526} {arXiv:2511.16526 [quant-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Nishiyama}\ and\ \citenamefont
+  {Hasegawa}(2025)}]{Nishiyama2025speedlimits}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Nishiyama}}\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Hasegawa}},\ }\bibfield  {title} {\bibinfo {title} {Speed limits and
+  thermodynamic uncertainty relations for quantum systems governed by
+  non-{H}ermitian {H}amiltonian},\ }\href
+  {https://doi.org/10.1103/PhysRevA.111.012214} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {111}},\ \bibinfo
+  {pages} {012214} (\bibinfo {year} {2025})},\ \bibinfo {note}
+  {arXiv:2404.16392}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wang}\ \emph {et~al.}(2026)\citenamefont {Wang},
+  \citenamefont {Hao},\ and\ \citenamefont {Yi}}]{wang2026general}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont
+  {Wang}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Hao}},\ and\
+  \bibinfo {author} {\bibfnamefont {X.~X.}\ \bibnamefont {Yi}},\ }\href
+  {https://doi.org/10.48550/arXiv.2605.23250} {\bibinfo {title} {A general
+  quantum speed limit for non-hermitian systems}} (\bibinfo {year} {2026}),\
+  \bibinfo {note} {arXiv:2605.23250 [quant-ph]},\ \Eprint
+  {https://arxiv.org/abs/2605.23250} {arXiv:2605.23250 [quant-ph]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Chau}\ and\ \citenamefont
   {Zeng}(2024)}]{ChauZeng2024UnifyingQSL}%

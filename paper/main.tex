@@ -1,4 +1,4 @@
-\documentclass[aps,prx,twocolumn,superscriptaddress,nofootinbib,longbibliography]{revtex4-2}
+\documentclass[aps,pra,twocolumn,superscriptaddress,nofootinbib,longbibliography]{revtex4-2}
 
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm}
@@ -66,7 +66,7 @@ orthogonalization).
 
 A parallel and rapidly growing line bounds the motion of an \emph{observable}---the rate of change of an
 expectation value $\mean{A(t)}=\Tr[\rho(t)A]$---which is what an experiment actually
-reads~\cite{GarciaPintos2022UnifyingObservables,mohan2022quantum,Bringewatt2024GeneralizedGeometric,Carabba2022operatorflows}.
+reads~\cite{GarciaPintos2022UnifyingObservables,mohan2022quantum,Bringewatt2024GeneralizedGeometric,Carabba2022operatorflows,Cafaro2026FluctuationGrowth}.
 This program now includes a first-of-kind multiparticle experiment~\cite{Miao2025Experiment}. With few
 exceptions, these observable QSLs bound the expectation-value \emph{rate} through the energy \emph{variance}.
 The unifying bound of García-Pintos \emph{et al.}~\cite{GarciaPintos2022UnifyingObservables} reads
@@ -116,8 +116,7 @@ functional} powers the bound (variance or mean energy). Three corners were known
 \label{tab:dichotomy}
 \end{table*}
 
-\noindent Three corners were known; the lower-right (mean energy $\times$ observable) was empty, and it is
-the \emph{only} quadratic one. The mechanism is transparent and is the heart of the no-go. The mean energy
+\noindent The mechanism behind that empty corner is transparent, and it is the heart of the no-go. The mean energy
 bounds only how far the \emph{state} moves---a geometric quantity---through the ML inequality
 $1-F\le K\,T(\mean{H}-E_0)$, $F=|\!\braket{\psi(0)|\psi(T)}\!|$. An observable change reads that geometry only
 through $\Delta\le 2\sigma_A\sqrt{1-F^2}$, a \emph{square root}. Composing a square root (geometric) with a
@@ -234,7 +233,7 @@ though not attained, by the near-ground two-level family
 $H=\mathrm{diag}(0,E)$, $A=\sigma_x$ ($\sigma_A=1$),
 $\ket{\psi}=\cos\theta\ket0+\sin\theta\,e^{i\beta}\ket1$, in the limit $\theta\to0$ with $ET=\xstar$ and the
 \emph{optimal relative phase} $\beta=\xstar/2-\pi/2$ (which starts $\mean{A(t)}$ at maximum slope rather than
-at a turning point). There all three inequalities saturate simultaneously. A dedicated global optimizer over
+at a turning point; Fig.~\ref{fig:traj}). There all three inequalities saturate simultaneously. A dedicated global optimizer over
 $(E_n,A,\psi)$ in $d=2$--$10$ confirms the floor: the smallest ratio found is
 $0.172506558\ge\Ctrue$, approached from above as $\theta\to0$, and no configuration dips below
 (Fig.~\ref{fig:multid}). Phase restriction ($\beta=0$, real amplitudes) gives instead the strictly larger
@@ -265,7 +264,8 @@ at fixed budget is $2\sigma_A\sqrt{1-F_{\min}^2}$ with $F_{\min}$ the minimal su
 energy~\cite{Giovannetti2003QuantumLimits}, whose two-level
 optimizer~\cite{Hornedal2023MargolusLevitinArbitraryFidelity} carries over; a multi-start search over
 $d=2$--$6$ finds no state below $P_\star(\delta)$ at any $\delta$. This is the observable counterpart---tight at
-every $\delta$, not only in the constant---of the exact arbitrary-fidelity Margolus--Levitin curve for states.
+every $\delta$, not only in the constant---of the exact arbitrary-fidelity Margolus--Levitin curve for states,
+whose defining equality of the two branch exponents was established in Ref.~\cite{Chau2023MLalpha}.
 
 \medskip
 \noindent\emph{Bandwidth-resolved constant.} If $\mathrm{spec}(H)\subset[E_0,E_0+B]$, the tangent-line
@@ -436,7 +436,9 @@ from a single bounded-observable expectation, with no state-overlap measurement.
 from finite samples (standard error $s$), error propagation gives the one-sided certificate
 $\mean H-E_0\ge\Ctrue[\max(0,\hat\Delta-z_\alpha s)]^2/(\sigma_A^2T)$ at confidence $1-\alpha$---a
 model-independent energy floor measurable on the platforms now realizing observable speed
-limits~\cite{Miao2025Experiment}, in the regime above where it binds.
+limits~\cite{Miao2025Experiment}, in the regime above where it binds. This is the observable-side analog of
+using a speed limit to infer the energy of an otherwise opaque quantum
+device~\cite{ishida2025energyinference}.
 
 \paragraph{Autonomous quantum clocks (primary).}
 An autonomous clock is by definition driven by a fixed, time-independent
@@ -486,8 +488,9 @@ of Budiyono \emph{et al.}~\cite{Budiyono2026QSLObservables}. The bound is theref
 energy-constrained, few-body or near-ground dynamics.
 
 \paragraph{Outlook.}
-Natural extensions are open-system (Lindbladian) and time-dependent-$H$ generalizations---where much of the
-driven-application landscape lives---and a sharp constant for ergotropy rather than stored energy. Within the
+Natural extensions are open-system (Lindbladian), non-Hermitian~\cite{Nishiyama2025speedlimits,wang2026general}
+and time-dependent-$H$ generalizations---where much of the driven-application landscape lives---and a sharp
+constant for ergotropy rather than stored energy. Within the
 present setting, the constant sharpens under a spectral-bandwidth restriction
 ($K\to\sup_{0<x\le BT}(1-\cos x)/x$) and generalizes to higher energy moments~\cite{ChauZeng2024UnifyingQSL}, and the bound assembles with the
 observable Mandelstam--Tamm limit into a unified envelope
@@ -503,6 +506,20 @@ arbitrary-fidelity Margolus--Levitin curve), its bandwidth-resolved and multi-ob
 backward reading as a model-independent mean-energy certificate. Together these make the
 (mean-energy $\times$ observable) corner of the speed-limit dichotomy a complete and operationally grounded
 one; its cleanest physical home is the thermodynamics of timekeeping.
+
+\begin{acknowledgments}
+The author received no funding for this work and declares no competing interests.
+\end{acknowledgments}
+
+\medskip\noindent\emph{Use of AI tools.} Large language models (Anthropic Claude, Opus~4.x and Opus~5 model
+series, accessed through the Claude Code command-line interface during 2026) were used substantively in
+preparing this manuscript: extensively for copy-editing and rewriting of the prose, and for writing and
+refactoring portions of the numerical verification and figure-generation scripts in the accompanying
+repository. All output was directed by the author through iterative prompting against a fixed statement of
+the results, and was verified by the author: every numerical claim in the text was checked against the
+committed scripts, and every reference was checked against its published record. The theorems, their proofs,
+and the closed-form constants are the author's own work and were not generated by an AI tool. The author
+takes full responsibility for all content.
 
 \bibliography{refs}
 
