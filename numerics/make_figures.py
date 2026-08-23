@@ -7,6 +7,8 @@ fig2_tangent.pdf     : g(x)=(1-cos x)/x with maximum K=sin x* at x* (the ML tang
 fig3_trajectory.pdf  : saturating-state <A(t)> trajectory (free-phase: starts at max slope;
                        beta=0: starts at a turning point) with Delta and T=x* marked.
 fig4_multid.pdf      : per-dimension min ratio (random + near-ground search) sitting above C_true.
+fig5_curve.pdf       : the exact trade-off curve P_star(delta) against its elementary lower
+                       bound (1-sqrt(1-delta^2))/K and its leading term 4 C_true delta^2.
 
 Run: python -u numerics/make_figures.py
 """
@@ -128,4 +130,31 @@ ax.set_title('No configuration beats $C_{\\rm true}$'); ax.legend(loc='upper lef
 ax.set_ylim(C_true-0.01, max(mins)+0.03); fig.tight_layout(); fig.savefig("paper/figs/fig4_multid.pdf"); plt.close(fig)
 
 print("min ratios per d:", {d: round(m,6) for d,m in zip(ds,mins)})
-print("WROTE paper/figs/fig1_convergence.pdf, fig2_tangent.pdf, fig3_trajectory.pdf, fig4_multid.pdf")
+
+# ---- fig 5: exact trade-off curve ----
+# parametric in tau = E*T on [x*, pi):  sin^2(theta) = (tau - tan(tau/2))/(tau - 2 tan(tau/2)),
+# P_star = tau sin^2(theta),  delta = sin(2 theta) sin(tau/2).   (Same curve as
+# verify_refinements.py part 1, which checks it is a strict lower boundary.)
+taus = np.linspace(xstar + 1e-9, np.pi - 1e-6, 200000)
+tt5 = np.tan(taus/2)
+s2 = np.clip((taus - tt5)/(taus - 2*tt5), 0.0, 1.0)
+P_star = taus*s2
+d_par = np.sqrt(4*s2*(1-s2))*np.sin(taus/2)
+order = np.argsort(d_par); d_tab, P_tab = d_par[order], P_star[order]
+dd = np.linspace(0, 1, 800)
+fig, ax = plt.subplots(figsize=(5.2, 3.8))
+ax.plot(d_tab, P_tab, color='C0', lw=2.0, label=r'exact $P_\star(\delta)$ (this work)')
+ax.plot(dd, (1 - np.sqrt(np.clip(1 - dd**2, 0, 1)))/K, ls='--', color='C2', lw=1.4,
+        label=r'lower bound $(1-\sqrt{1-\delta^2})/K$')
+ax.plot(dd, 4*C_true*dd**2, ls=':', color='C3', lw=1.7,
+        label=r'leading $4C_{\rm true}\delta^2$')
+ax.axhline(np.pi/2, ls='-.', color='k', lw=1.0, label=r'$\pi/2$')
+ax.set_xlim(0, 1.0); ax.set_ylim(0, 1.62)
+ax.set_xlabel(r'normalized swing $\delta=\Delta/2\sigma_A$')
+ax.set_ylabel(r'energy--time budget $P=T(\langle H\rangle-E_0)$')
+ax.legend(loc='upper left', fontsize=9)
+fig.tight_layout(); fig.savefig("paper/figs/fig5_curve.pdf"); plt.close(fig)
+print(f"P_star endpoints: delta->0 gives {P_tab[0]:.3e}, delta->1 gives {P_tab[-1]:.6f} (pi/2={np.pi/2:.6f})")
+
+print("WROTE paper/figs/fig1_convergence.pdf, fig2_tangent.pdf, fig3_trajectory.pdf, "
+      "fig4_multid.pdf, fig5_curve.pdf")

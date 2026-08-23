@@ -35,7 +35,8 @@
     "random_min_ratio": 0.19211819,
     "violations_below_C_true": 0,
     "genuine_mixed_floor_wmin0.15": 0.633273,
-    "note": "full proof + 16000-config search: numerics/ext_mixed_check.py; purification: ext_mixed_purification_check.py"
+    "ext_mixed_check_global_min_ratio": 0.1760167166,
+    "note": "random_min_ratio is this script's own 2500-config search (seed 7001). The stronger 16000-config search in numerics/ext_mixed_check.py reaches 0.1760167166, which is the value quoted in the paper; that script also audits the convexity chain, and numerics/ext_mixed_purification_check.py the purification route. Both are numerical stress tests, not proofs."
   },
   "structured": {
     "rank1_inf_ratio": 0.172506268,
@@ -44,18 +45,18 @@
     "real_restricted_target_C_old": 0.18555147172183603,
     "eigenvector_linear_inf_rlin": 0.345071,
     "eigenvector_target_1/(4K)": 0.34501253492232525,
-    "note": "rank-1/real/banded + ground-gapped: numerics/struct_verify_independent.py, struct_multifreq.py"
+    "note": "rank1_inf_ratio is the free-phase infimum recomputed here (identical to saturation_pure: the rank-1 ground coupling does not raise the floor). Independent structured searches: numerics/struct_verify_independent.py (rank-1, real-restricted, ground-gapped), struct_rank1_check.py and struct_fast.py (energy-banded), struct_multifreq.py (multi-frequency)."
   },
   "battery": {
     "saturation_R": 0.17264065,
     "target_C_true": 0.17250626746116263,
     "hostile_min_R": 0.2181385,
-    "note": "values from numerics/app_battery_check.py (seed 20260623): saturation R->0.17264065 (->C_true as theta->0), hostile min R=0.2181385 over 4000 trials, 0 violations"
+    "note": "transcribed from a run of numerics/app_battery_check.py (seed 20260623), not recomputed here: saturation R->0.17264065 (->C_true as theta->0), hostile min R=0.2181385 over 4000 trials, 0 violations"
   },
   "global_optimizer_floor": {
     "value": 0.17250656,
-    "d_range": "2..7",
+    "d_range": "2..10",
     "ref": "numerics/optimize_constant.py",
-    "note": ">= C_true, approached from above"
+    "note": "transcribed from a run of that script, not recomputed here; >= C_true, approached from above. Figure 5 of the paper plots the d=2..7 subrange."
   }
 }

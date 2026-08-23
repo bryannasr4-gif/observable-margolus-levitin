@@ -10,38 +10,12 @@
 This repository contains the manuscript and the complete, seeded numerical verification suite for a
 quantum speed limit on **observables** powered by the **mean energy**.
 
-> ### Note on positioning (August 2026)
->
-> An earlier version of this README carried a "correction notice" retracting several attribution and
-> formula claims. **That notice was itself in error and has been withdrawn:** it described a manuscript
-> that does not exist. `paper/main.tex` has been unchanged since the first commit (2026-07-05), and it
-> already credits every source the notice said was missing, and already prints the Sec. V constant in
-> the form the notice proposed as the fix. The withdrawn items are listed below so the record is clear.
->
-> **What the manuscript already does (verifiable in `paper/main.tex`):**
->
-> - **Credits $C_\star$ to Giovannetti–Lloyd–Maccone.** The abstract calls the trade-off curve "the
->   observable analog of the Giovannetti–Lloyd–Maccone curve for states," and Sec. IV states: *"This
->   tangent-line constant is the orthogonality ($q\to0$) member of the generalized Margolus–Levitin
->   construction of Giovannetti, Lloyd, and Maccone."* The constant was never claimed as new.
-> - **Credits the inherited proof route, and names its own new step:** *"follows the statistical-distance
->   derivation of the Margolus–Levitin bound by Jones and Kok (corrected by Zwierz) and the
->   survival-amplitude inequality of Bhattacharyya; the new step is to place a bounded observable on the
->   left via Hölder."* All three references are in `refs.bib` and cited.
-> - **Engages Hörnedal–Sönnerborn (PRA 108, 052421)** on exactly the relevant point: the
->   Margolus–Levitin bound does not extend to closed systems with time-dependent generators, which is
->   why the time-independent-$H$ restriction here is essential.
-> - **Prints the Sec. V constant correctly**, with the variable defined in the same sentence:
->   $C_{\beta=0} = 1/(16\,\phi_\star\sin^2\phi_\star) = \phi_\star/(4(1-\cos\phi_\star)^2) = 0.185551\ldots$,
->   where $\phi_\star = 2.78650\ldots$ is the smallest positive root of $1-\cos x = 2x\sin x$. The
->   erroneous formula quoted by the withdrawn notice appears nowhere in the manuscript.
->
-> **What is genuinely worth restating.** The contribution claimed here is the **no-go theorem** (the
-> optimal state-independent mean-energy exponent of $\Delta$ is exactly **two**) together with the
-> **eigenvector dichotomy**. $C_\star$, the tangent-line lemma, and the proof route are inherited and
-> cited as such. One phrasing is softened: describing the (mean-energy $\times$ observable) corner as
-> "empty" overstates it, since Hörnedal–Sönnerborn analyze an adjacent near-ground two-level family in
-> the time-dependent-$H$ setting. The bound, the constant, and every number in the paper are unaffected.
+> **What is new, and what is inherited.** New here: the **no-go theorem** — the optimal
+> state-independent mean-energy exponent of $\Delta$ is exactly **two**, so no linear mean-energy bound
+> exists — and the **eigenvector dichotomy**. Inherited, and cited as such in the manuscript: the
+> constant $C_\star$ (the $q\to0$ Giovannetti–Lloyd–Maccone member), the tangent-line lemma, the proof
+> route (Jones–Kok, corrected by Zwierz; Bhattacharyya), and the saturating two-level family
+> (Hörnedal–Sönnerborn). See [History](#history) for a withdrawn correction notice.
 
 ---
 
@@ -106,10 +80,13 @@ observable-margolus-levitin/
 ├── numerics/
 │   ├── README.md         # claim → script map (every quoted number → the script that emits it)
 │   ├── results.json      # consolidated machine-readable record of the pinned numbers
+│   ├── theory_core.py    # first-pass script: the phase-restricted constant C_old
 │   ├── theory_core_v2.py # the constant C*, pinned to 52 digits
+│   ├── explore_observable_ML.py # exploratory scan behind the no-go exponent
+│   ├── audit_d2.py       # the d = 2 optimizer minimum, re-evaluated four ways
 │   ├── make_results.py   # regenerates results.json
 │   ├── verify_refinements.py  # trade-off curve, bandwidth constant, two-observable bound
-│   ├── optimize_constant.py   # global optimizer floor (d = 2..7)
+│   ├── optimize_constant.py   # global optimizer floor (d = 2..10)
 │   ├── ext_mixed_check.py / ext_mixed_purification_check.py  # mixed-state bound
 │   ├── struct_*.py            # structured observables & linear recovery
 │   ├── app_battery_check.py   # quantum-battery application
@@ -149,9 +126,10 @@ sampled configurations.
 ## Building the paper
 
 The latest compiled manuscript is committed at [`paper/main.pdf`](paper/main.pdf). The GitHub Actions
-workflow ([`.github/workflows/build-paper.yml`](.github/workflows/build-paper.yml)) also recompiles
-`paper/main.tex` on every push and uploads the PDF as a build artifact, so the source and the PDF stay
-in sync.
+workflow ([`.github/workflows/build-paper.yml`](.github/workflows/build-paper.yml)) recompiles
+`paper/main.tex` on every push that touches `paper/` and uploads the result as a build artifact, so a
+source change that would break the build cannot pass unnoticed. It does not overwrite the committed
+PDF; that is regenerated and committed by hand.
 
 Locally, with a TeX distribution that includes RevTeX 4-2:
 
@@ -171,10 +149,26 @@ This is a **preprint** — a self-contained, independently cross-checked manuscr
 been peer-reviewed or submitted to a journal. Feedback and corrections are welcome via the issue
 tracker.
 
-**Status of the manuscript (August 2026).** `paper/main.tex` and the committed `paper/main.pdf` are
-current and correct as they stand; the withdrawn correction notice described errors the manuscript does
-not contain. The only pending revision is the softened "empty corner" phrasing noted above. The PDF may
-be cited as-is.
+The committed `paper/main.pdf` is compiled from the committed `paper/main.tex` and may be cited as-is.
+
+## History
+
+An August 2026 revision of this README carried a "correction notice" retracting several attribution and
+formula claims. **That notice was itself in error and was withdrawn.** Checked against the first commit:
+
+- The manuscript credits Giovannetti–Lloyd–Maccone for the tangent-line constant, in the abstract and
+  again at the point of derivation; $C_\star$ was never claimed as new.
+- It cites Jones–Kok, Zwierz and Bhattacharyya as the proof route it follows, and names its own new step
+  (a bounded observable on the left via Hölder). All three were in `refs.bib` and cited from the start,
+  as was Hörnedal–Sönnerborn, which it engages on the time-dependent-$H$ point.
+- Sec. V prints $C_{\beta=0} = 1/(16\,\phi_\star\sin^2\phi_\star) = \phi_\star/(4(1-\cos\phi_\star)^2)
+  = 0.185551\ldots$, with $\phi_\star = 2.78650\ldots$ defined in the same sentence as the smallest
+  positive root of $1-\cos x = 2x\sin x$. The formula the notice called erroneous appears nowhere in the
+  manuscript.
+
+The one substantive point was kept: describing the (mean-energy $\times$ observable) corner as "empty"
+overstates it, since Hörnedal–Sönnerborn analyse an adjacent near-ground two-level family in the
+time-dependent-$H$ setting. The bound, the constant, and every number in the paper are unaffected.
 
 ## Citation
 
@@ -185,9 +179,9 @@ If you use this work, please cite the manuscript (see [`CITATION.cff`](CITATION.
 
 ## License
 
-Code (everything under `numerics/`) is released under the [MIT License](LICENSE). The manuscript text
-and figures under `paper/` are © 2026 Bryan Nasr, released under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Code (everything under `numerics/`) is released under the [MIT License](LICENSE); this is the licence
+recorded in [`CITATION.cff`](CITATION.cff). The manuscript text and figures under `paper/` are
+© 2026 Bryan Nasr, released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Contact
 

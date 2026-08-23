@@ -98,15 +98,22 @@ def rand_mixed_minratio(seed, ntri, dmax=5, force_wmin=None):
     return float(gmin)
 mixed = {
     "random_min_ratio": round(rand_mixed_minratio(7001, 2500), 8),
-    "violations_below_C_true": 0,  # confirmed by ext_mixed_check.py (16000 configs) + here
+    "violations_below_C_true": 0,
     "genuine_mixed_floor_wmin0.15": round(rand_mixed_minratio(7102, 1500, force_wmin=0.15), 6),
-    "note": "full proof + 16000-config search: numerics/ext_mixed_check.py; purification: ext_mixed_purification_check.py",
+    "ext_mixed_check_global_min_ratio": 0.1760167166,
+    "note": ("random_min_ratio is this script's own 2500-config search (seed 7001). The "
+             "stronger 16000-config search in numerics/ext_mixed_check.py reaches "
+             "0.1760167166, which is the value quoted in the paper; that script also audits "
+             "the convexity chain, and numerics/ext_mixed_purification_check.py the "
+             "purification route. Both are numerical stress tests, not proofs."),
 }
 
 # ---------- structured ----------
 # rank-1 saturator (single excited at E*T=x*, optimal phase) -> C_true
 def rank1_saturator():
-    # 2-level A=sigma_x is the rank-1 saturator; free-phase inf already = C_true
+    # The 2-level A=sigma_x IS the rank-1 saturator, so this is the same free-phase
+    # infimum as saturation_pure above -- reported again here only to show that
+    # restricting to rank-1 ground coupling does not raise the floor.
     return round(freephase_inf(1e-4), 9)
 # eigenvector linear: A=sigma_z, psi0=|0>; search inf r_lin -> 1/(4K)
 A = np.array([[1,0],[0,-1]], complex); psi0 = np.array([1,0], complex)
@@ -128,22 +135,30 @@ structured = {
     "real_restricted_inf": round(float(min(np.linspace(1e-3,2*np.pi-1e-3,200000)/(4*(1-np.cos(np.linspace(1e-3,2*np.pi-1e-3,200000)))**2))), 9),
     "real_restricted_target_C_old": C_old,
     "eigenvector_linear_inf_rlin": round(float(best_lin), 6), "eigenvector_target_1/(4K)": inv4K,
-    "note": "rank-1/real/banded + ground-gapped: numerics/struct_verify_independent.py, struct_multifreq.py",
+    "note": ("rank1_inf_ratio is the free-phase infimum recomputed here (identical to "
+             "saturation_pure: the rank-1 ground coupling does not raise the floor). "
+             "Independent structured searches: numerics/struct_verify_independent.py "
+             "(rank-1, real-restricted, ground-gapped), struct_rank1_check.py and "
+             "struct_fast.py (energy-banded), struct_multifreq.py (multi-frequency)."),
 }
 
 # ---------- battery (cross-ref dedicated script app_battery_check.py) ----------
 # The careful 2-level battery saturation (near-ground, non-commuting generator, optimal
 # phase) is in numerics/app_battery_check.py (verified to reach R -> 0.17264065 -> C_true).
 battery = {"saturation_R": 0.17264065, "target_C_true": C_true, "hostile_min_R": 0.2181385,
-           "note": "values from numerics/app_battery_check.py (seed 20260623): saturation R->0.17264065 (->C_true as theta->0), hostile min R=0.2181385 over 4000 trials, 0 violations"}
+           "note": ("transcribed from a run of numerics/app_battery_check.py (seed 20260623), not "
+                    "recomputed here: saturation R->0.17264065 (->C_true as theta->0), hostile min "
+                    "R=0.2181385 over 4000 trials, 0 violations")}
 
 results = {
     "_meta": {"hbar": 1, "E0": 0, "generated_by": "numerics/make_results.py",
               "constant": "C_true = 1/(8K), K=sin x*, tan(x*/2)=x*"},
     "constants": constants, "nogo": nogo, "saturation_pure": sat,
     "mixed": mixed, "structured": structured, "battery": battery,
-    "global_optimizer_floor": {"value": 0.17250656, "d_range": "2..7", "ref": "numerics/optimize_constant.py",
-                               "note": ">= C_true, approached from above"},
+    "global_optimizer_floor": {"value": 0.17250656, "d_range": "2..10", "ref": "numerics/optimize_constant.py",
+                               "note": ("transcribed from a run of that script, not recomputed here; "
+                                        ">= C_true, approached from above. Figure 5 of the paper plots "
+                                        "the d=2..7 subrange.")},
 }
 with open("numerics/results.json", "w") as fh:
     json.dump(results, fh, indent=2)

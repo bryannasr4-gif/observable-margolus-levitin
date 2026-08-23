@@ -25,7 +25,7 @@ mean energy bounds expectation-value change quadratically}
 \email{bryannasr4@gmail.com}
 \affiliation{Independent Researcher}
 
-\date{\today}
+\date{23 August 2026}
 
 \begin{abstract}
 The Mandelstam--Tamm and Margolus--Levitin quantum speed limits bound how fast a \emph{state}
@@ -213,8 +213,8 @@ finite mean energy, so it extends to a separable infinite-dimensional Hilbert sp
 spectral measure of finite first moment.
 
 \noindent Figure~\ref{fig:tangent} shows the lemma. All inequalities are elementary and exact; we verified
-the chain numerically over $10^5$ random configurations in dimensions $2$--$7$ with zero violations
-(Sec.~\ref{sec:numerics}).
+the resulting bound numerically over more than $1.5\times10^{6}$ sampled configuration--time points in
+dimensions $2$--$6$, with zero violations (Sec.~\ref{sec:numerics}).
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{figs/fig2_tangent.pdf}
@@ -392,17 +392,27 @@ it is vacuous, and Mandelstam--Tamm, which uses the finite state variance, is op
 \label{sec:numerics}
 All numerics are seeded and reproducible (\texttt{numerics/}; consolidated in
 \texttt{results.json}). The named constant is pinned to $52$ digits with \texttt{mpmath}. The no-go exponent
-is confirmed by the log--log slope of $P_{\min}(\Delta)$ along the saturating family ($2.0$). The pure-state
-bound survives $10^5$ random trials in $d=2$--$7$ (worst-case slacks $\ge0$ to machine precision) and a
-dedicated multi-start optimizer (Fig.~\ref{fig:multid}); the apparent sub-$\Ctrue$ minima are floating-point
-catastrophic cancellation at excited population $\sim10^{-14}$ and disappear at $60$-digit precision. The
+is confirmed by the log--log slope of $P_{\min}(\Delta)$ along the saturating family ($2.017$, against the
+predicted $2$). The pure-state bound survives a $1{,}555{,}984$-point random search in $d=2$--$6$
+(worst-case slacks $\ge0$ to machine precision) and a dedicated multi-start optimizer
+(Fig.~\ref{fig:multid}). At $d=2$ the coarse first-passage evaluator inside that optimizer is the least
+accurate step, because the configurations that come closest to the floor are near-ground ones (excited
+population $\sim10^{-11}$, swing $\sim10^{-5}$); re-evaluating the exact two-level ratio there with the
+first passage solved analytically in $60$-digit arithmetic returns $0.1725103\ge\Ctrue$, so the apparent
+sub-$\Ctrue$ minima are an artifact of that evaluator's time grid and not violations. The
 mixed-state bound is confirmed by a violation search over random density matrices (minimum sampled ratio
 $0.176\ge\Ctrue$) and by a direct audit of the convexity chain; the infimum over mixed states is again
-$\Ctrue$, approached as the state purifies onto the saturating family. The linear-recovery constant $1/4K$ and the structured constants $\Ctrue$, $C_{\beta=0}$ are
-reproduced to six digits. The exact trade-off curve $P_\star(\delta)$ is confirmed as a strict lower boundary
+$\Ctrue$, approached as the state purifies onto the saturating family. The structured constants $\Ctrue$
+and $C_{\beta=0}$ are reproduced to eight significant digits, and the linear-recovery constant $1/4K$ is
+approached to within $6\times10^{-5}$. The exact trade-off curve $P_\star(\delta)$ is confirmed as a strict lower boundary
 by a multi-start search in $d=2$--$6$ (no state dips below it at any $\delta$); the bandwidth-resolved bound
-$\Ctrue(BT)$ by a violation search over spectrally bounded $H$ ($0$ violations in $1.5\times10^5$ trials); and
-the two-observable bound saturates the $2\times$ gain at $\Delta_1=\Delta_2$.
+$\Ctrue(BT)$ by a violation search over spectrally bounded $H$ ($0$ violations in $8\times10^5$ trials); and
+the two-observable bound saturates the $2\times$ gain at $\Delta_1=\Delta_2$ ($0$ violations in
+$4\times10^6$ trials).
+
+\medskip\noindent\emph{Data availability.} The manuscript source, the figure and verification scripts, and
+\texttt{results.json} are openly available at
+\url{https://github.com/bryannasr4-gif/observable-margolus-levitin}.
 
 \section{Applications and discussion}
 \label{sec:apps}
