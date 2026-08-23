@@ -1,0 +1,111 @@
+{
+  "_meta": {
+    "generated_by": "numerics/record_runs.py",
+    "purpose": "what the two search scripts ACTUALLY printed, with seeds and ranges; make_results.py ingests this instead of hard-coding a search result",
+    "python": "3.12.10"
+  },
+  "global_optimizer_floor": {
+    "script": "numerics/optimize_constant.py",
+    "seeds": [
+      1,
+      7,
+      42,
+      101,
+      2024,
+      31337
+    ],
+    "np_random_seed": 12345,
+    "d_range": "2..10",
+    "starts_per_d": {
+      "2": 80,
+      "3": 60,
+      "4": 45,
+      "5": 35,
+      "6": 28,
+      "7": 22,
+      "8": 18,
+      "9": 15,
+      "10": 12
+    },
+    "per_d_best_ratio": {
+      "2": 0.1725387154,
+      "3": 0.1725063425,
+      "4": 0.1727003974,
+      "5": 0.1725206569,
+      "6": 0.1726995966,
+      "7": 0.1730412463,
+      "8": 0.1918182433,
+      "9": 0.2918870632,
+      "10": 0.7449302054
+    },
+    "structured_min_ratio": 0.185560900166,
+    "min_ratio_found": 0.17250634253781064,
+    "ratio_minus_C_true": 7.508e-08,
+    "violation_below_C_true": false,
+    "where": "('opt', 3, 'lowres')",
+    "note": "stochastic multi-start search => an UPPER bound on the floor, not the floor",
+    "source": "ingested from a completed run log (numerics/runs/optimize_constant_2026-08-18.txt)"
+  },
+  "figure4_scan_floor": {
+    "script": "numerics/make_figures.py (fig-4 block), re-run verbatim by record_runs.py",
+    "seeds": {
+      "2": 1002,
+      "3": 1003,
+      "4": 1004,
+      "5": 1005,
+      "6": 1006,
+      "7": 1007
+    },
+    "d_range": "2..7",
+    "trials_per_d": 900,
+    "per_d_min_ratio": {
+      "2": 0.17251059522510337,
+      "3": 0.17251059522510337,
+      "4": 0.17251059522510337,
+      "5": 0.17251059522510337,
+      "6": 0.17251059522510337,
+      "7": 0.17251059522510337
+    },
+    "min_ratio_found": 0.17251059522510337,
+    "wall_seconds": 20.4,
+    "note": "separate, faster purpose-built scan; this is the number Fig. 4 plots"
+  },
+  "refinements": {
+    "script": "numerics/verify_refinements.py",
+    "curve_lower_boundary": {
+      "configs_sampled": 1555984,
+      "min_slack": 1.4e-05,
+      "P_star_at_delta_to_1": 1.570795,
+      "small_delta_P_over_delta2": 0.690536
+    },
+    "bandwidth_constant": {
+      "gain_at_L_1": 1.5763,
+      "gain_at_L_0.5": 2.9596,
+      "trials": 799972,
+      "violations": 0,
+      "min_ratio_over_C_L": 1.05011,
+      "claim_status": "stated as a remark in main.tex Sec. V; full search retained here"
+    },
+    "two_observable": {
+      "trials": 3979998,
+      "violations": 0,
+      "min_ratio": 0.172649,
+      "min_ratio_at_equal_swings": 0.346932,
+      "claim_status": "stated as a remark in main.tex Sec. VI; full search retained here"
+    },
+    "source": "ingested from a completed run log (numerics/runs/verify_refinements_2026-08-18.txt)"
+  },
+  "mixed_violation_search": {
+    "script": "numerics/ext_mixed_check.py",
+    "per_d_min_ratio": {
+      "2": 0.1760167166,
+      "3": 0.2353898931,
+      "4": 0.5412945869,
+      "5": 0.5906255797
+    },
+    "min_over_all_d": 0.1760167166,
+    "violations_below_C_true": 0,
+    "note": "main.tex Sec. VIII quotes the d=2 entry as 'minimum sampled ratio 0.176'; results.json's mixed.random_min_ratio is a different sample. Both are recorded so neither can drift.",
+    "source": "ingested from a completed run log (numerics/runs/ext_mixed_check_2026-08-18.txt)"
+  }
+}

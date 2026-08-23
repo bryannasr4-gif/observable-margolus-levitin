@@ -12,7 +12,7 @@ quantum speed limit on **observables** powered by the **mean energy**.
 
 > **What is new, and what is inherited.** New here: the **no-go theorem** — the optimal
 > state-independent mean-energy exponent of $\Delta$ is exactly **two**, so no linear mean-energy bound
-> exists — and the **eigenvector dichotomy**. Inherited, and cited as such in the manuscript: the
+> exists — and the **eigenvector linear-recovery theorem**. Inherited, and cited as such in the manuscript: the
 > constant $C_\star$ (the $q\to0$ Giovannetti–Lloyd–Maccone member), the tangent-line lemma, the proof
 > route (Jones–Kok, corrected by Zwierz; Bhattacharyya), and the saturating two-level family
 > (Hörnedal–Sönnerborn). See [History](#history) for a withdrawn correction notice.
@@ -37,8 +37,9 @@ where $x_\star = 2.331122370\ldots$ is the smallest positive root of $\tan(x/2)=
 - **A no-go theorem — the original kernel.** There is *no* state-independent **linear** mean-energy
   bound on $\Delta$; the optimal mean-energy exponent of $\Delta$ is exactly **two**. The bound above
   is therefore the best possible in its exponent.
-- **The eigenvector dichotomy.** The quadratic law degrades to a linear one *exactly* when the initial
-  state is an eigenvector of $A$ — a sharp characterization of when the quadratic penalty disappears.
+- **The eigenvector linear-recovery theorem.** The quadratic law degrades to a linear one when the
+  initial state is an eigenvector of $A$ — a *sufficient* condition; a zero initial slope alone is not
+  enough, as the manuscript shows by explicit counterexample.
 
 **What is inherited, and cited as such.** $C_\star$ itself is the $q\to0$ Giovannetti–Lloyd–Maccone
 constant, the tangent-line lemma is theirs, and the proof route follows Jones–Kok / Zwierz; the
@@ -59,8 +60,8 @@ establishes and explains.
 
 The paper also proves the full constant survives for mixed states (joint convexity of the trace
 distance), sharpens it for bandwidth-limited generators and for several observables at once, and
-shows the quadratic law degrades to a linear one exactly when the initial state is an eigenvector of
-$A$. Its most natural physical setting is the **autonomous quantum clock**, where it gives a coherent
+shows the quadratic law degrades to a linear one when the initial state is an eigenvector of
+$A$ (a sufficient condition). Its most natural physical setting is the **autonomous quantum clock**, where it gives a coherent
 mean-energy resolution floor complementary to the known entropy and rate bounds. **That application —
 and the quantum-battery one — is illustrative, not binding:** neither currently constrains any existing
 platform, because the bound is quadratic and therefore weakest exactly in the operationally interesting

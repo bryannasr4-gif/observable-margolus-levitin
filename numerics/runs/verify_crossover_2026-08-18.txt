@@ -1,0 +1,17 @@
+x* = 2.331122370414423   K = 0.724611353776708   C* = 0.172506267461163
+1 - K = 0.275388646223292   8*C* = 1.380050139689301   (note 1/(8C*) = K)
+
+[PASS] (1) Eq. (crossover) identity: max relative deviation over 20000 random configs = 6.714e-16
+[PASS] (1b) both floors respected: checked implicitly by the pure-state suite
+[PASS] (2) qubit ratio == 8 C*(1-eps): max abs deviation = 4.441e-16
+[PASS] (2b) crossover threshold eps = 1-K: 1-K = 0.275388646223; ratio brackets 1 across it (1.000000001380 > 1 > 0.999999998620)
+[PASS] (2c) qubit floor <= actual T: min slack (T - floor)*omega = 0.381492 > 0
+[PASS] (3) dE/(<H>-E0) == cot(theta): max rel deviation = 4.052e-16
+[PASS] (3b) kappa_MT == (1/2)tan(theta): max rel deviation = 4.257e-16
+[PASS] (3c) kappa_MT -> 0 (no-go): kappa_MT(theta=1e-6) = 5.000e-07 -> no positive state-independent constant survives
+[PASS] (4) projector -> (1-F^2)/(2K): max abs deviation = 1.148e-41
+[PASS] (4b) ratio to ML state bound == (1+F)/2: max abs deviation (40 dps) = 4.511e-39; -> 1 as F -> 1
+[PASS] (4c) generic step loose by one sqrt for Pi_0: D = 1-F^2 <= sqrt(1-F^2) for all F in [0,1] (algebraic)
+[PASS] (5) ||rho_T-rho_0||_1 == 2 sqrt(1-F^2), attained: max abs deviation (norm and Hoelder saturation) = 1.554e-15
+
+ALL CHECKS PASSED

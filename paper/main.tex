@@ -40,13 +40,13 @@ $T\,(\mean{H}-E_0)\ge \Ctrue\,\Delta^2/\sigma_A^2$,
 valid for every time-independent Hamiltonian $H$ (ground energy $E_0$), every bounded observable $A$ with
 spectral spread $\sigma_A=(\lambda_{\max}-\lambda_{\min})/2$, and every pure \emph{or mixed} state, with the
 dimension-independent constant $\Ctrue=1/(8\sin \xstar)=0.172506267461\ldots$, where $\xstar$ is the smallest positive
-root of $\tan(x/2)=x$. The bound is tight, saturated by a near-ground two-level family. We then promote it to
+root of $\tan(x/2)=x$. The bound is tight, approached (though not attained) by a near-ground two-level family. We then promote it to
 the \emph{exact} energy--time/swing trade-off curve of which $\Ctrue$ is the small-swing slope---tight at every
 swing, the observable analog of the Giovannetti--Lloyd--Maccone curve for states---prove the full constant
 survives for mixed states via joint convexity of the trace distance, sharpen the constant for
 bandwidth-limited generators and for several observables at once, and show the quadratic law degrades to a
 linear one when the initial state is an eigenvector of the observable (a sufficient condition). The result
-completes the previously empty (mean-energy $\times$ observable) corner of the speed-limit landscape and, being
+completes the (mean-energy $\times$ observable) corner of the speed-limit landscape and, being
 quadratic, is most constraining where the linear variance bounds are weakest. We discuss its cleanest physical home---autonomous quantum clocks, where it furnishes a coherent
 mean-energy resolution floor complementary to the known entropy and rate bounds---and delimit honestly the
 settings it does not constrain.
@@ -112,11 +112,11 @@ observable, $\Delta\mean{A}$ & $T\ge \Delta/(2\Delta H\,\sigma_A)$ \quad (linear
 \end{ruledtabular}
 \caption{The speed-limit dichotomy: \emph{what moves} (a state or an observable) $\times$ \emph{which energy
 functional} powers the bound (variance or mean energy). Three corners were known; the lower-right
-(mean energy $\times$ observable) corner was empty and is the \emph{only} quadratic one.}
+(mean energy $\times$ observable) corner is completed here and is the \emph{only} quadratic one.}
 \label{tab:dichotomy}
 \end{table*}
 
-\noindent The mechanism behind that empty corner is transparent, and it is the heart of the no-go. The mean energy
+\noindent The mechanism behind that gap is transparent, and it is the heart of the no-go. The mean energy
 bounds only how far the \emph{state} moves---a geometric quantity---through the ML inequality
 $1-F\le K\,T(\mean{H}-E_0)$, $F=|\!\braket{\psi(0)|\psi(T)}\!|$. An observable change reads that geometry only
 through $\Delta\le 2\sigma_A\sqrt{1-F^2}$, a \emph{square root}. Composing a square root (geometric) with a
@@ -235,7 +235,7 @@ $\ket{\psi}=\cos\theta\ket0+\sin\theta\,e^{i\beta}\ket1$, in the limit $\theta\t
 \emph{optimal relative phase} $\beta=\xstar/2-\pi/2$ (which starts $\mean{A(t)}$ at maximum slope rather than
 at a turning point; Fig.~\ref{fig:traj}). There all three inequalities saturate simultaneously. A dedicated global optimizer over
 $(E_n,A,\psi)$ in $d=2$--$10$ confirms the floor: the smallest ratio found is
-$0.172506558\ge\Ctrue$, approached from above as $\theta\to0$, and no configuration dips below
+$0.17250634\ge\Ctrue$, approached from above as $\theta\to0$, and no configuration dips below
 (Fig.~\ref{fig:multid}). Phase restriction ($\beta=0$, real amplitudes) gives instead the strictly larger
 $C_{\beta=0}=\dfrac{1}{16\,\phi_\star\sin^2\phi_\star}=\dfrac{\phi_\star}{4(1-\cos\phi_\star)^2}=0.185551\ldots$
 ($+7.6\%$), with $\phi_\star=2.78650\ldots$ the smallest positive root of $1-\cos x=2x\sin x$, saturated at the
@@ -417,7 +417,7 @@ $4\times10^6$ trials).
 \section{Applications and discussion}
 \label{sec:apps}
 The most important consequence is structural: Eq.~\eqref{eq:main} is the first mean-energy, quadratic-in-$\Delta$
-member of the observable-QSL family, the variance/Fisher members being \emph{linear} in
+bound on the change of an expectation value in a fixed state, the variance/Fisher members being \emph{linear} in
 $\Delta$~\cite{GarciaPintos2022UnifyingObservables,mohan2022quantum,Bringewatt2024GeneralizedGeometric}.
 Being quadratic, it is most constraining exactly where the linear bounds are weakest---for \emph{large}
 fractional changes $\Delta/\sigma_A$---so the two families are complementary, not competing. Observable QSLs
@@ -508,6 +508,8 @@ backward reading as a model-independent mean-energy certificate. Together these 
 one; its cleanest physical home is the thermodynamics of timekeeping.
 
 \begin{acknowledgments}
+I thank L. Maccone for comments on an earlier version.
+
 The author received no funding for this work and declares no competing interests.
 \end{acknowledgments}
 

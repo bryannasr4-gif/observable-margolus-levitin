@@ -171,9 +171,9 @@
   bounds on fluctuation growth of observables in unitary dynamics},\ }\href
   {https://doi.org/10.1016/j.qrl.2026.05.001} {\bibfield  {journal} {\bibinfo
   {journal} {Quantum Review Letters}\ }\textbf {\bibinfo {volume} {2}},\
-  \bibinfo {pages} {63} (\bibinfo {year} {2026})},\ \bibinfo {note}
-  {arXiv:2504.00261},\ \Eprint {https://arxiv.org/abs/2504.00261}
-  {arXiv:2504.00261 [quant-ph]} \BibitemShut {NoStop}%
+  \bibinfo {pages} {63} (\bibinfo {year} {2026})},\ \Eprint
+  {https://arxiv.org/abs/2504.00261} {arXiv:2504.00261 [quant-ph]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Miao}\ \emph {et~al.}(2025)\citenamefont {Miao},
   \citenamefont {Liu}, \citenamefont {Ning}, \citenamefont {Hu}, \citenamefont
   {Zhang}, \citenamefont {Li},\ and\ \citenamefont {Guo}}]{Miao2025Experiment}%
@@ -296,9 +296,8 @@
   systems},\ }\href {https://doi.org/10.1103/PhysRevResearch.6.013018}
   {\bibfield  {journal} {\bibinfo  {journal} {Physical Review Research}\
   }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages} {013018} (\bibinfo {year}
-  {2024})},\ \bibinfo {note} {arXiv:2305.03190},\ \Eprint
-  {https://arxiv.org/abs/2305.03190} {arXiv:2305.03190 [quant-ph]} \BibitemShut
-  {NoStop}%
+  {2024})},\ \Eprint {https://arxiv.org/abs/2305.03190} {arXiv:2305.03190
+  [quant-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Ishida}\ and\ \citenamefont
   {Hasegawa}(2025)}]{ishida2025energyinference}%
   \BibitemOpen
@@ -306,9 +305,8 @@
   {Ishida}}\ and\ \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
   {Hasegawa}},\ }\href@noop {} {\bibinfo {title} {Energy inference of black-box
   quantum computers using quantum speed limit}} (\bibinfo {year} {2025}),\
-  \bibinfo {note} {arXiv:2512.15472},\ \Eprint
-  {https://arxiv.org/abs/2512.15472} {arXiv:2512.15472 [quant-ph]} \BibitemShut
-  {NoStop}%
+  \Eprint {https://arxiv.org/abs/2512.15472} {arXiv:2512.15472 [quant-ph]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Erker}\ \emph {et~al.}(2017)\citenamefont {Erker},
   \citenamefont {Mitchison}, \citenamefont {Silva}, \citenamefont {Woods},
   \citenamefont {Brunner},\ and\ \citenamefont
@@ -507,8 +505,9 @@
   non-{H}ermitian {H}amiltonian},\ }\href
   {https://doi.org/10.1103/PhysRevA.111.012214} {\bibfield  {journal} {\bibinfo
    {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {111}},\ \bibinfo
-  {pages} {012214} (\bibinfo {year} {2025})},\ \bibinfo {note}
-  {arXiv:2404.16392}\BibitemShut {NoStop}%
+  {pages} {012214} (\bibinfo {year} {2025})},\ \Eprint
+  {https://arxiv.org/abs/2404.16392} {arXiv:2404.16392 [quant-ph]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Wang}\ \emph {et~al.}(2026)\citenamefont {Wang},
   \citenamefont {Hao},\ and\ \citenamefont {Yi}}]{wang2026general}%
   \BibitemOpen
@@ -517,9 +516,8 @@
   \bibinfo {author} {\bibfnamefont {X.~X.}\ \bibnamefont {Yi}},\ }\href
   {https://doi.org/10.48550/arXiv.2605.23250} {\bibinfo {title} {A general
   quantum speed limit for non-hermitian systems}} (\bibinfo {year} {2026}),\
-  \bibinfo {note} {arXiv:2605.23250 [quant-ph]},\ \Eprint
-  {https://arxiv.org/abs/2605.23250} {arXiv:2605.23250 [quant-ph]} \BibitemShut
-  {NoStop}%
+  \Eprint {https://arxiv.org/abs/2605.23250} {arXiv:2605.23250 [quant-ph]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Chau}\ and\ \citenamefont
   {Zeng}(2024)}]{ChauZeng2024UnifyingQSL}%
   \BibitemOpen

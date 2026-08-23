@@ -1,0 +1,20 @@
+C_true = 0.172506267461163   K = 0.724611353776708
+
+======================================================================
+(1) VIOLATION SEARCH over random mixed states (looking for ratio < C_true)
+======================================================================
+  d=2: min ratio = 0.1760167166   (>= C_true? True)
+  d=3: min ratio = 0.2353898931   (>= C_true? True)
+  d=4: min ratio = 0.5412945869   (>= C_true? True)
+  d=5: min ratio = 0.5906255797   (>= C_true? True)
+
+  GLOBAL min ratio (random mixed) = 0.1760167166
+  C_true                          = 0.1725062675
+  violations (< C_true - 1e-7)    = 0
+  => CONSISTENT with full C_true
+
+======================================================================
+(2) DIRECT CHECK of the convexity proof chain (random instances)
+======================================================================
+  worst slack across all links/trials = -4.293e-14  (>=0 means all hold)
+  => convexity chain HOLDS on all instances

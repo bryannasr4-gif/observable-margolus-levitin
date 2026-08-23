@@ -1,0 +1,24 @@
+x*=2.331122370414  K=0.724611353777  C_true=0.172506267461
+
+======================================================================
+(1) exact trade-off curve P_star(delta) is a strict lower boundary
+======================================================================
+  endpoints: P_star(delta->0)->2.217e-09 (=0),  P_star(delta->1)->1.570795  (pi/2=1.570796)
+  small-delta:  P_star/delta^2 -> 0.690536   (4*C_true=0.690025)
+  configs sampled: 1,555,984   min slack (P - P_star(delta)) = 1.400e-05
+  => PASS (curve is a lower boundary)
+
+======================================================================
+(2) bandwidth-resolved constant  C_true(L)=1/(8 K(L))
+======================================================================
+  L=1.0:  C_true(L)/C_true = K/K(L) = 1.5763   (paper: 1.58x)
+  L=0.5:  C_true(L)/C_true = K/K(L) = 2.9596   (paper: 2.96x)
+  bandwidth violation search: 799,972 trials, violations=0, min(ratio/C_true(BT))=1.05011
+  => PASS
+
+======================================================================
+(3) two-observable bound  T<H> >= C_true (Delta_1^2+Delta_2^2)/sigma_A^2
+======================================================================
+  two-observable search: 3,979,998 trials, violations=0, min(T<H>/(D1^2+D2^2))=0.172649  (C_true=0.172506)
+  at Delta_1~=Delta_2:  min T<H>/max(D)^2 = 0.346932   (2*C_true=0.345013; the 2x single-observable floor)
+  => PASS

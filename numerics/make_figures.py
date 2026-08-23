@@ -44,11 +44,11 @@ thetas = np.linspace(0.6, 0.02, 26)
 rf = [twolevel_ratio(t, True) for t in thetas]
 r0 = [twolevel_ratio(t, False) for t in thetas]
 fig, ax = plt.subplots(figsize=(5.2, 3.8))
-ax.plot(thetas, rf, 'o-', ms=4, label=r'free phase $\to C_{\rm true}$', color='C0')
-ax.plot(thetas, r0, 's-', ms=4, label=r'$\beta=0$ (real) $\to C_{\rm old}$', color='C3')
+ax.plot(thetas, rf, 'o-', ms=4, label=r'free phase $\to C_\star$', color='C0')
+ax.plot(thetas, r0, 's-', ms=4, label=r'$\beta=0$ (real) $\to C_{\beta=0}$', color='C3')
 ax.axhline(C_true, ls='--', color='C0', lw=1); ax.axhline(C_old, ls='--', color='C3', lw=1)
-ax.text(0.45, C_true-0.004, rf'$C_{{\rm true}}={C_true:.5f}$', color='C0', fontsize=9)
-ax.text(0.45, C_old+0.002, rf'$C_{{\rm old}}={C_old:.5f}$', color='C3', fontsize=9)
+ax.text(0.45, C_true-0.004, rf'$C_\star={C_true:.5f}$', color='C0', fontsize=9)
+ax.text(0.45, C_old+0.002, rf'$C_{{\beta=0}}={C_old:.5f}$', color='C3', fontsize=9)
 ax.set_xlabel(r'ground-dominance angle $\theta$'); ax.set_ylabel(r'$T\langle H\rangle\,\sigma_A^2/\Delta^2$')
 ax.set_title('Two-level ratio approaches the sharp constant'); ax.legend(loc='upper left', fontsize=9)
 ax.set_ylim(0.16, 0.30); fig.tight_layout(); fig.savefig("paper/figs/fig1_convergence.pdf"); plt.close(fig)
@@ -122,11 +122,11 @@ def mind(d, seed, ntri=900):
     return best
 ds = list(range(2, 8)); mins = [mind(d, 1000+d) for d in ds]
 fig, ax = plt.subplots(figsize=(5.2, 3.8))
-ax.axhline(C_true, ls='--', color='C0', lw=1.3, label=rf'$C_{{\rm true}}={C_true:.6f}$')
+ax.axhline(C_true, ls='--', color='C0', lw=1.3, label=rf'$C_\star={C_true:.6f}$')
 ax.scatter(ds, mins, color='C3', zorder=5, label='min ratio found (random search)')
 for d, m in zip(ds, mins): ax.annotate(f'{m:.4f}', (d, m), textcoords='offset points', xytext=(0,7), fontsize=8, ha='center')
 ax.set_xlabel('Hilbert-space dimension $d$'); ax.set_ylabel(r'min $T\langle H\rangle\,\sigma_A^2/\Delta^2$')
-ax.set_title('No configuration beats $C_{\\rm true}$'); ax.legend(loc='upper left', fontsize=9)
+ax.set_title('No configuration beats $C_\\star$'); ax.legend(loc='upper left', fontsize=9)
 ax.set_ylim(C_true-0.01, max(mins)+0.03); fig.tight_layout(); fig.savefig("paper/figs/fig4_multid.pdf"); plt.close(fig)
 
 print("min ratios per d:", {d: round(m,6) for d,m in zip(ds,mins)})
@@ -147,7 +147,7 @@ ax.plot(d_tab, P_tab, color='C0', lw=2.0, label=r'exact $P_\star(\delta)$ (this 
 ax.plot(dd, (1 - np.sqrt(np.clip(1 - dd**2, 0, 1)))/K, ls='--', color='C2', lw=1.4,
         label=r'lower bound $(1-\sqrt{1-\delta^2})/K$')
 ax.plot(dd, 4*C_true*dd**2, ls=':', color='C3', lw=1.7,
-        label=r'leading $4C_{\rm true}\delta^2$')
+        label=r'leading $4C_\star\delta^2$')
 ax.axhline(np.pi/2, ls='-.', color='k', lw=1.0, label=r'$\pi/2$')
 ax.set_xlim(0, 1.0); ax.set_ylim(0, 1.62)
 ax.set_xlabel(r'normalized swing $\delta=\Delta/2\sigma_A$')
