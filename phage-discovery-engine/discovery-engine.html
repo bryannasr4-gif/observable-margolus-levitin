@@ -1,0 +1,449 @@
+<title>Phage Discovery Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+
+<style>
+:root{
+  --bg:#F3F6F5; --surface:#FFFFFF; --surface-2:#E9F0EE;
+  --border:#D4DEDB; --border-strong:#B6C5C1;
+  --ink:#14201E; --ink-2:#374744; --muted:#647672;
+  --accent:#12695F; --accent-soft:#DBEBE7; --accent-line:#9CC6BF;
+  --kill:#8E3F2C; --kill-soft:#F4E4DF;
+  --warn:#7E5A1C; --warn-soft:#F2E9D8;
+  --shadow:0 1px 2px rgba(20,32,30,.05), 0 8px 24px -16px rgba(20,32,30,.28);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1412; --surface:#121D1A; --surface-2:#18251F;
+    --border:#26332E; --border-strong:#3A4B45;
+    --ink:#E4ECE8; --ink-2:#BDCAC5; --muted:#8CA09B;
+    --accent:#4FB0A0; --accent-soft:#123029; --accent-line:#2E5B53;
+    --kill:#D08670; --kill-soft:#31201B;
+    --warn:#CBA05C; --warn-soft:#2C2416;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1412; --surface:#121D1A; --surface-2:#18251F;
+  --border:#26332E; --border-strong:#3A4B45;
+  --ink:#E4ECE8; --ink-2:#BDCAC5; --muted:#8CA09B;
+  --accent:#4FB0A0; --accent-soft:#123029; --accent-line:#2E5B53;
+  --kill:#D08670; --kill-soft:#31201B;
+  --warn:#CBA05C; --warn-soft:#2C2416;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box;}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16.5px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; margin:0;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 28px 96px;}
+.col{max-width:68ch;}
+h1,h2,h3{font-family:var(--serif); font-weight:500; text-wrap:balance; margin:0; letter-spacing:-.01em;}
+p{margin:0;}
+a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px;}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:3px;}
+strong{font-weight:600; color:var(--ink);}
+em{font-style:italic;}
+
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; font-weight:500;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
+}
+.rule{height:1px; background:var(--border); border:0; margin:0;}
+
+/* masthead */
+header.mast{border-bottom:1px solid var(--border-strong); padding:64px 0 40px; margin-bottom:56px;}
+header.mast h1{font-size:clamp(2.5rem,6vw,4rem); line-height:1.02;}
+.standfirst{font-family:var(--serif); font-size:clamp(1.15rem,2.2vw,1.45rem); line-height:1.45; color:var(--ink-2); margin-top:20px; max-width:44ch;}
+.mast-meta{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:28px; font-family:var(--mono); font-size:12px; color:var(--muted);}
+.mast-meta span{display:flex; gap:8px;}
+.mast-meta b{color:var(--ink-2); font-weight:500;}
+
+/* sections */
+section{margin-top:72px;}
+section > .eyebrow{display:block; margin-bottom:14px;}
+section > h2{font-size:clamp(1.7rem,3.4vw,2.3rem); line-height:1.15; margin-bottom:20px;}
+.lede{font-size:1.06rem; color:var(--ink-2); margin-bottom:28px;}
+.body-flow{display:flex; flex-direction:column; gap:18px;}
+
+/* callout */
+.callout{
+  background:var(--accent-soft); border:1px solid var(--accent-line);
+  border-radius:2px; padding:22px 26px; display:flex; flex-direction:column; gap:12px;
+}
+.callout .eyebrow{color:var(--accent);}
+.callout p{font-family:var(--serif); font-size:1.14rem; line-height:1.5; color:var(--ink);}
+
+/* numbers strip */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:2px; overflow:hidden;}
+.stat{background:var(--surface); padding:22px 20px; display:flex; flex-direction:column; gap:7px;}
+.stat b{font-family:var(--mono); font-size:1.85rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums; line-height:1;}
+.stat span{font-size:13.5px; color:var(--ink-2); line-height:1.4;}
+.stat i{font-style:normal; font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);}
+
+/* moves */
+.moves{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--border);}
+.move{display:grid; grid-template-columns:auto 1fr; gap:22px; padding:20px 0; border-bottom:1px solid var(--border); align-items:start;}
+.move .n{font-family:var(--mono); font-size:12px; color:var(--muted); padding-top:5px; font-variant-numeric:tabular-nums;}
+.move p{font-size:1.02rem;}
+
+/* tables */
+.tablewrap{overflow-x:auto; border:1px solid var(--border); border-radius:2px; background:var(--surface);}
+table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:560px;}
+th,td{text-align:left; padding:13px 16px; border-bottom:1px solid var(--border); vertical-align:top;}
+thead th{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; background:var(--surface-2); border-bottom:1px solid var(--border-strong);
+  position:sticky; top:0;
+}
+tbody tr:last-child td{border-bottom:0;}
+td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap;}
+
+/* chips */
+.chip{
+  display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:2px;
+  border:1px solid currentColor; white-space:nowrap;
+}
+.chip.a{color:var(--accent); background:var(--accent-soft);}
+.chip.b{color:var(--warn); background:var(--warn-soft);}
+.chip.c{color:var(--kill); background:var(--kill-soft);}
+
+/* mechanism cards */
+.mechs{display:flex; flex-direction:column; gap:14px;}
+.mech{background:var(--surface); border:1px solid var(--border); border-radius:2px; box-shadow:var(--shadow); overflow:hidden;}
+.mech > summary{
+  cursor:pointer; padding:18px 22px; display:flex; gap:14px; align-items:baseline;
+  list-style:none; flex-wrap:wrap;
+}
+.mech > summary::-webkit-details-marker{display:none;}
+.mech > summary h3{font-size:1.16rem; flex:1 1 320px;}
+.mech > summary .code{font-family:var(--mono); font-size:12px; color:var(--muted); font-weight:500;}
+.mech[open] > summary{border-bottom:1px solid var(--border); background:var(--surface-2);}
+.mech .inner{padding:20px 22px 22px; display:flex; flex-direction:column; gap:14px;}
+.mech dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:9px 20px; font-size:14.5px;}
+.mech dt{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); padding-top:4px;}
+.mech dd{margin:0; color:var(--ink-2);}
+.mech dd strong{color:var(--ink);}
+.riskline{font-size:13.5px; font-family:var(--mono); padding:10px 14px; border-radius:2px; border:1px solid var(--border);}
+.riskline.hi{color:var(--kill); background:var(--kill-soft); border-color:currentColor;}
+.riskline.lo{color:var(--accent); background:var(--accent-soft); border-color:var(--accent-line);}
+
+/* stack diagram */
+.stack{display:flex; flex-direction:column; border:1px solid var(--border-strong); border-radius:2px; overflow:hidden; background:var(--surface);}
+.band{display:grid; grid-template-columns:56px 1fr; gap:0; border-bottom:1px solid var(--border);}
+.band:last-child{border-bottom:0;}
+.band .lvl{
+  font-family:var(--mono); font-size:12px; color:var(--muted); font-weight:500;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--surface-2); border-right:1px solid var(--border);
+}
+.band .bd{padding:15px 20px; display:flex; flex-direction:column; gap:4px;}
+.band .bd b{font-size:14.5px; font-weight:600;}
+.band .bd span{font-size:13.5px; color:var(--muted); line-height:1.45;}
+.gauntlet{
+  background:var(--accent-soft); border-top:2px dashed var(--accent); border-bottom:2px dashed var(--accent);
+  padding:15px 20px; display:flex; flex-direction:column; gap:5px;
+}
+.gauntlet b{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent);}
+.gauntlet span{font-size:14px; color:var(--ink); font-family:var(--serif); font-size:1.05rem;}
+.flowkey{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-top:12px;}
+
+/* phases */
+.phases{display:flex; flex-direction:column; border-left:2px solid var(--border-strong); padding-left:0;}
+.phase{display:grid; grid-template-columns:auto 1fr; gap:20px; padding:0 0 26px 22px; position:relative;}
+.phase::before{content:""; position:absolute; left:-6px; top:7px; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--bg);}
+.phase .ph{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); white-space:nowrap; padding-top:2px;}
+.phase .pd{display:flex; flex-direction:column; gap:7px;}
+.phase .pd b{font-size:15.5px;}
+.phase .pd p{font-size:14.5px; color:var(--ink-2);}
+.gate{font-family:var(--mono); font-size:12.5px; color:var(--kill); background:var(--kill-soft); border:1px solid currentColor; border-radius:2px; padding:7px 11px; align-self:start;}
+
+/* rejected list */
+.rejects{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border);}
+.reject{background:var(--surface); padding:18px 20px; display:flex; flex-direction:column; gap:7px;}
+.reject b{font-size:14.5px;}
+.reject span{font-size:13.5px; color:var(--muted); line-height:1.45;}
+.reject .tag{font-family:var(--mono); font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--kill);}
+
+footer{margin-top:88px; padding-top:32px; border-top:1px solid var(--border-strong); font-size:13.5px; color:var(--muted); display:flex; flex-direction:column; gap:10px;}
+
+@media (max-width:640px){
+  .wrap{padding:0 20px 72px;}
+  .move{grid-template-columns:1fr; gap:6px;}
+  .phase{grid-template-columns:1fr; gap:8px;}
+  .mech dl{grid-template-columns:1fr; gap:3px 0;}
+  .mech dt{padding-top:10px;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important;}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Research design study &middot; Phase 0 complete</p>
+  <h1>Phage Discovery Engine</h1>
+  <p class="standfirst">A machine that turns the public phage corpus into ranked, falsifiable bench experiments — and a design for keeping it honest enough to deserve the bench time.</p>
+  <div class="mast-meta">
+    <span><b>Prepared for</b> Pride Laboratories, San Diego</span>
+    <span><b>Scope</b> Taxon-agnostic, public-corpus-first</span>
+    <span><b>Objective</b> Novel mechanism, publishable</span>
+  </div>
+</header>
+
+<div class="col body-flow">
+  <div class="callout">
+    <p class="eyebrow">Sourcing limit, stated first</p>
+    <p>This session's network policy blocked every scholarly host at the proxy. Findings rest on search synthesis and abstracts, <strong>not full-text reading</strong>. A document about intellectual honesty should not open by overstating its own sourcing.</p>
+  </div>
+</div>
+
+<section>
+  <p class="eyebrow">The argument</p>
+  <h2>Six moves from the seed idea to something worth building</h2>
+  <div class="col">
+    <div class="moves">
+      <div class="move"><span class="n">01</span><p>The public corpus doubled to ~29,000 complete phage genomes while its <strong>novel species-level fraction declined</strong>. In a corpus like that, "conspicuously absent" is mostly "not yet sequenced" — so the seed's headline mechanism has to be demoted.</p></div>
+      <div class="move"><span class="n">02</span><p>A material share of phage "dark matter" is <strong>annotation failure, not unknown biology</strong>: stop-codon recoding and a 100-codon gene-calling floor. Phage λ — the most studied phage on Earth — hides 55 unannotated translated ORFs.</p></div>
+      <div class="move"><span class="n">03</span><p>Two <em>Science</em> 2026 papers just did "protein language models discover bacterial defense systems." That lane is closed — <strong>but one validated 42 of 94 candidates at the bench</strong>, handing us a 44.7% calibration anchor.</p></div>
+      <div class="move"><span class="n">04</span><p>The phage side is roughly <strong>100× less explored</strong> than the bacterial side, for a methodological reason: 80% of anti-defense proteins fall under 200 amino acids, where homology search, PLM embeddings and structure prediction all degrade at once.</p></div>
+      <div class="move"><span class="n">05</span><p>So build a <strong>phage-side, small-protein-biased, target-assigning</strong> engine. Not "is this anti-defense?" but "does this inhibit <em>Thoeris</em>?" — which turns a panel of strains into a single plate.</p></div>
+      <div class="move"><span class="n">06</span><p>And keep it honest by running the <strong>entire pipeline on a null corpus</strong> to count how many compelling hypotheses it manufactures from noise, treating phylogenetic non-independence as a first-class quantity, and spending a fifth of bench capacity on experiments it expects to fail.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Anchors</p>
+  <h2>Five numbers that set the design</h2>
+  <div class="stats">
+    <div class="stat"><i>Bench validation rate</i><b>44.7%</b><span>DefensePredictor: 94 candidates cloned, 42 protected. The bar any queue must clear.</span></div>
+    <div class="stat"><i>Anti-defense proteins</i><b>&lt;200<span style="font-size:1rem"> aa</span></b><span>80% of them. Exactly where every detection method degrades.</span></div>
+    <div class="stat"><i>Unannotated in phage λ</i><b>55</b><span>Translated ORFs missing from our best-characterised genome.</span></div>
+    <div class="stat"><i>BFVD structural novelty</i><b>&gt;62%</b><span>Predicted viral structures with no close neighbour anywhere.</span></div>
+    <div class="stat"><i>AI-scientist accuracy</i><b>~80%</b><span>Kosmos statements judged correct. One in five is wrong.</span></div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Phase 0</p>
+  <h2>What the seed got wrong</h2>
+  <p class="lede col">Four mechanisms were proposed. One survives intact, one is largely already published, one is partly mis-specified, and one has to be demoted outright.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Seed mechanism</th><th>Verdict</th><th>Reasoning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Absence</strong></td><td><span class="chip c">Demoted</span></td><td>A doubling corpus with a falling novel fraction cannot separate <em>absent</em> from <em>unsampled</em>. Survives only behind an explicit sampling-power model.</td></tr>
+        <tr><td><strong>Dark matter structure</strong></td><td><span class="chip b">Mis-specified</span></td><td>Clustering is done (PHROGs, BFVD, phold). Part of the residue is recoding and small-ORF blindness — annotation failure, cheaper to fix than biology is to discover.</td></tr>
+        <tr><td><strong>Cross-taxon analogy</strong></td><td><span class="chip a">Upheld</span></td><td>This is the one job LLMs demonstrably do well. The cf-PICI tail-piracy result was exactly this, and it worked.</td></tr>
+        <tr><td><strong>Coupling</strong></td><td><span class="chip a">Upheld, phage side</span></td><td>Defense–defense co-occurrence across 42,925 genomes is published. Phage-gene × host-defense coupling, properly corrected, is open.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col body-flow" style="margin-top:28px">
+    <p><strong>One structural observation.</strong> Absence, dark matter and coupling are not three mechanisms — they are three readings of a single sparse matrix of gene families × genomes: read for holes, for unlabelled rows, for correlated columns. Only cross-taxon analogy is genuinely different, because it operates on literature rather than on the matrix. That collapse is useful: one well-corrected substrate serves three mechanisms, and the language-model layer sits orthogonally on top instead of being wired into each.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Scope discipline</p>
+  <h2>What not to build</h2>
+  <p class="lede col">The fastest way to waste this project is to rebuild something that already works. Each row is a refusal.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Don't build</th><th>Because</th><th>Use instead</th></tr></thead>
+      <tbody>
+        <tr><td>Bacterial defense discovery from PLMs</td><td>Published twice in <em>Science</em> in one month</td><td>Consume their output as host features</td></tr>
+        <tr><td>A phage annotation pipeline</td><td>phold annotates &gt;50% of genes against 1.36M structures</td><td>Run phold; extend only for recoding and small ORFs</td></tr>
+        <tr><td>Strain-level EOP prediction</td><td>Ceiling is AUC 0.818 in <em>Klebsiella</em>, the easiest system in the field</td><td>Predict mechanism, not phenotype</td></tr>
+        <tr><td>A protein structure database</td><td>BFVD and Viro3D exist; folding is ~1,000 structures/GPU-day</td><td>Fold only the top ~10³ candidates</td></tr>
+        <tr><td>A knowledge graph as the product</td><td>Infrastructure that photographs well and decides nothing</td><td>Only the provenance DAG the queue needs</td></tr>
+        <tr><td>Generative phage genome design</td><td>Evo 2 fails long-range organisation, k-mer and constraint structure</td><td>Revisit in two years</td></tr>
+        <tr><td>A multi-agent debate society</td><td>~75% of multi-agent failures are silent; scaling often increases failure</td><td>Three tool-bound roles, real information asymmetry</td></tr>
+        <tr><td>Training on the lab's EOP matrix</td><td>Too small; spot-test and EOP labels are not the same quantity</td><td>Held-out truth set and residual analysis</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Mechanisms</p>
+  <h2>What the machine actually looks for</h2>
+  <p class="lede col">Graded honestly. Tier A is what I would build; each carries its falsifier and, more importantly, its prior-art risk — because a mechanism whose prior art I haven't checked is a liability, not an asset.</p>
+  <div class="mechs">
+
+    <details class="mech" open>
+      <summary><span class="code">A1</span><h3>Hotspot occupancy → target assignment</h3><span class="chip a">Build</span></summary>
+      <div class="inner">
+        <dl>
+          <dt>Finds</dt><dd>Phage genomes carry conserved syntenic anchors with small (~1–5 kb) variable cassettes between them. Catalogue every occupant across the corpus, then <strong>assign each occupant family a target defense system</strong> by testing whether its presence in phages tracks a specific defense system in those phages' hosts.</dd>
+          <dt>Humans miss it</dt><dd>It requires holding thousands of phage genomes × hundreds of host defense repertoires × positional context at once. The published instances each took lab-years for a single phage family.</dd>
+          <dt>Falsifier</dt><dd>Clone the ORF into a host carrying the predicted target system; challenge with a phage that system restricts. <strong>No ≥10-fold EOP rescue and it's dead.</strong></dd>
+        </dl>
+        <p class="riskline hi">Prior-art risk: HIGH. Hotspot detection is built (iLund4u); P2/P4 mining is published (PARIS). Defensible novelty is <em>target assignment</em>, not hotspot discovery. Verify in week one.</p>
+      </div>
+    </details>
+
+    <details class="mech">
+      <summary><span class="code">A2</span><h3>The small-protein blind spot</h3><span class="chip a">Build</span></summary>
+      <div class="inner">
+        <dl>
+          <dt>Finds</dt><dd>Anti-defense proteins that current methods structurally cannot see. Requires re-calling ORFs from nucleotides with <strong>no length floor</strong>, recoding-aware, scored by conservation and position rather than length.</dd>
+          <dt>Machines miss it</dt><dd>Not an oversight — a <em>convention</em>. The 100-codon floor is baked into every annotation pipeline and inherited by every downstream tool. Systematic blind spots are enumerable.</dd>
+          <dt>Caveat</dt><dd>Highest false-positive mechanism in the set; short ORFs occur by chance constantly. Viable only in hard conjunction with positional and selection evidence.</dd>
+        </dl>
+        <p class="riskline lo">Prior-art risk: LOW–MEDIUM. The one I'm most confident is unexploited — precisely because the gap exists for an unglamorous reason.</p>
+      </div>
+    </details>
+
+    <details class="mech">
+      <summary><span class="code">A3</span><h3>Coupling, with the phylogeny actually handled</h3><span class="chip a">Build</span></summary>
+      <div class="inner">
+        <dl>
+          <dt>Finds</dt><dd>The seed's coupling mechanism — but the value is almost entirely in the correction, not the correlation.</dd>
+          <dt>The problem</dt><dd>Genomes are related by descent. A correlation across 400 genomes drawn from three clonal expansions has an effective n near <strong>3</strong>. Uncorrected, this produces thousands of beautiful, significant, meaningless associations.</dd>
+          <dt>Expectation</dt><dd>Correction will kill most of the signal. That is the system working. If it kills all of it, A3 dies and the risk register says so.</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="mech">
+      <summary><span class="code">A4</span><h3>Trigger–antagonist pairing</h3><span class="chip a">Build, speculative</span></summary>
+      <div class="inner">
+        <dl>
+          <dt>Finds</dt><dd>PARIS is the template: a defense system whose <em>trigger</em> is a specific phage counter-defense protein (T7 Ocr). That is a second-order relationship — defense₂ senses anti-defense₁ — and it is a grammar, not a one-off.</dd>
+          <dt>Falsifier</dt><dd>Express the candidate antagonist in a host carrying the candidate sensor. A true trigger should induce the defense phenotype <em>in the absence of phage</em>. Clean and unambiguous.</dd>
+          <dt>Honesty</dt><dd>My most speculative Tier-A entry, labelled as such. Depends on A1/A3 landing first — and carries the highest scientific upside in the catalogue.</dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="mech">
+      <summary><span class="code">A5</span><h3>Selection signal on hypotheticals</h3><span class="chip a">Build</span></summary>
+      <div class="inner">
+        <dl>
+          <dt>Finds</dt><dd>"This gene is under conflict." Homology-independent evidence of arms-race participation — it answers <em>is this contested?</em> without needing to know what the gene does.</dd>
+          <dt>Confounder</dt><dd>Phage genomes are pervasively mosaic and recombination badly inflates dN/dS. Recombination-aware methods are mandatory; anything that vanishes under correction dies.</dd>
+        </dl>
+      </div>
+    </details>
+
+  </div>
+  <div class="col body-flow" style="margin-top:26px">
+    <p><span class="chip b">Tier B</span> &nbsp;Conditional or corrective: corpus-wide recoding sweep; nucleotide-modification-based restriction escape; DGR-driven host-range <em>plasticity</em> (which phages <em>can</em> evolve new range — a better question than which they currently infect); module-boundary engineerability maps; and the lab's own EOP residuals, which are the single place private data beats the public corpus outright.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Architecture</p>
+  <h2>One line does most of the work</h2>
+  <p class="lede col">Seven layers, but the design reduces to a single rule about where the language models are allowed to stand.</p>
+  <div class="stack">
+    <div class="band"><span class="lvl">6</span><span class="bd"><b>Queue</b><span>Pre-registered claims: calibrated probability, explicit falsifier, costed experiment</span></span></div>
+    <div class="band"><span class="lvl">5</span><span class="bd"><b>Rank</b><span>Declared utility function; expected information gain per dollar</span></span></div>
+    <div class="band"><span class="lvl">4</span><span class="bd"><b>Adversarial verification</b><span>Tool-bound critics: prior-art gate, confounder attack, experiment-design critique</span></span></div>
+    <div class="band"><span class="lvl">3</span><span class="bd"><b>Synthesis</b><span>Observation → mechanistic claim + falsifier. The only layer where an LLM writes prose</span></span></div>
+    <div class="gauntlet"><b>Confounder gauntlet</b><span>No language model may see anything below this line.</span></div>
+    <div class="band"><span class="lvl">2</span><span class="bd"><b>Sensors</b><span>Statistical detectors emitting observations — effect size, null model, corrected q, provenance</span></span></div>
+    <div class="band"><span class="lvl">1</span><span class="bd"><b>Representation</b><span>Re-called ORFs · embeddings · 3Di structure proxies · synteny graph · phylogenies</span></span></div>
+    <div class="band"><span class="lvl">0</span><span class="bd"><b>Substrate</b><span>Versioned, content-addressed corpus snapshots</span></span></div>
+  </div>
+  <p class="flowkey">Data flows up · provenance resolves down · every queue item traces to content-addressed substrate</p>
+  <div class="col body-flow" style="margin-top:28px">
+    <p><strong>Why the line is there.</strong> Once a language model sees a spurious correlation, it will write a compelling mechanism for it. Narrative capacity is the enemy of calibration. So nothing reaches the narrative layer until it has survived the statistics — phylogenetic correction, sampling-power, redundancy, annotation-artifact, shortcut-learning and leakage checks, all automated, all before an LLM is invoked.</p>
+    <p><strong>Why exactly three LLM roles.</strong> Because there are exactly three genuine information asymmetries, and every agent beyond that adds a silent-failure surface. The <em>Synthesiser</em> sees the evidence but is blinded to the literature, so it can't write toward a known answer. The <em>Prior-art auditor</em> sees the literature but is blinded to the claim's confidence, so it can't rationalise a high scorer. The <em>Experiment designer</em> sees the assay catalogue but not the novelty score, so it can't be seduced by excitement. Blinding as an architectural primitive, borrowed from experimental design rather than from agent frameworks.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Honesty machinery</p>
+  <h2>How it avoids lying to the lab</h2>
+  <p class="lede col">GNoME and A-Lab did not fail at generation. They failed at novelty verification and at knowing what they had. That is the failure mode to engineer against.</p>
+  <div class="col body-flow">
+    <div class="callout">
+      <p class="eyebrow">The central idea</p>
+      <p>Run the entire stack — sensors, gauntlet, synthesis, critique, ranking — on a corpus whose biological signal has been destroyed but whose structure is preserved. Count how many compelling, falsifiable hypotheses come out. <strong>That number is the pipeline's false-discovery floor.</strong></p>
+    </div>
+    <p>If the null corpus yields 40 exciting hypotheses and the real corpus yields 60, the system has produced roughly twenty findings and a great deal of prose. It is cheap, it runs every release, and it belongs at the top of the dashboard. I found no AI-for-science system that does this — and I think its absence is why the materials-discovery results were able to fail so publicly. Nobody asked their pipeline what it produced from noise.</p>
+    <h3 style="font-size:1.3rem; margin-top:14px">The retrospective benchmark, and its contamination</h3>
+    <p>Freeze the corpus at 2021-01-01 and require the system to surface what came after: PARIS (2022), Tad1 (2022), Acb2 (2023), the 21 defense systems that were never enriched in defense islands. Score by recall@k and by the <em>rank</em> of each — a system that buries PARIS at rank 4,000 has not rediscovered it.</p>
+    <p>The caveat must not be buried: ESM-2, ProstT5 and every frontier LLM were trained on post-2021 data. <strong>The benchmark is contaminated by construction.</strong> So the strict version runs on non-PLM detectors only — positional, phylogenetic, selection — computed from the frozen corpus alone. PLM-assisted results are reported separately and labelled contaminated, and the two are never mixed into one headline number. I would rather report a clean 0.3 than a contaminated 0.8.</p>
+    <h3 style="font-size:1.3rem; margin-top:14px">The recommendation most likely to be resisted</h3>
+    <p>If the lab only ever tests the top of the queue, <strong>the calibration curve is unidentifiable</strong>. You will learn your top bin's hit rate and nothing about whether your 0.3 predictions are really 0.3 — which is exactly what you need to trust the ranking. So: <strong>allocate 20–25% of experimental capacity to a stratified random sample across confidence bins, including bins you expect to fail.</strong> That is a real cost, and it is the price of knowing whether the machine works. A lab spending all its bench time on the top of the queue is running an unfalsifiable system, however good the statistics look.</p>
+    <p>Two more mechanisms close the loop. Every hypothesis is <strong>hash-committed before its experiment</strong>, and outcomes join on that hash — so post-hoc reinterpretation is structurally impossible and negative results cannot be quietly dropped. And each detector's realised hit rate is tracked against its predicted band; drift past tolerance triggers <strong>automatic quarantine</strong> — a code path, not a review meeting.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">The loop</p>
+  <h2>What a hypothesis costs to kill</h2>
+  <p class="lede col">You said you didn't know which assays are routine, so the menu is specified rather than assumed. Costs and durations are engineering estimates from published protocols, not cited figures — labelled rather than dressed up.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Assay</th><th>Time</th><th>Est. cost</th><th>Discriminates</th></tr></thead>
+      <tbody>
+        <tr><td>Spot test panel</td><td class="num">hours</td><td class="num">~$1–3/pair</td><td>Almost nothing. Overestimates host range and doesn't track EOP — <strong>pre-screen only</strong></td></tr>
+        <tr><td>Quantitative EOP</td><td class="num">1–2 d</td><td class="num">~$10–15/pair</td><td>Productive infection vs. mere killing</td></tr>
+        <tr><td><strong>Heterologous expression + EOP shift</strong></td><td class="num">~1 wk</td><td class="num">~$50–150/gene</td><td><strong>Does gene X confer or defeat defense Y. The workhorse — all of Tier A depends on it</strong></td></tr>
+        <tr><td>Adsorption assay</td><td class="num">1 d</td><td class="num">~$10</td><td>Adsorption vs. post-adsorption barrier. Cheap, under-used</td></tr>
+        <tr><td>Escape-mutant isolation + WGS</td><td class="num">1–2 wk</td><td class="num">~$50–100/genome</td><td>Receptor identity and defense target. Best information per dollar</td></tr>
+        <tr><td>Tn-seq / RB-TnSeq</td><td class="num">3–6 wk</td><td class="num">high</td><td>Genome-wide host factors; found receptors for 5 of 6 uncharacterised phages</td></tr>
+        <tr><td>Ribo-seq</td><td class="num">weeks</td><td class="num">high</td><td>Small-ORF translation — the only way to close out an A2 claim</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col body-flow" style="margin-top:26px">
+    <p><strong>The dependency to flag plainly.</strong> Heterologous expression is the falsifier for A1, A2, A3 and A4 — the entire Tier-A programme. If the lab cannot clone and express genes in a tractable host, Tier A is not falsifiable in-house. That is not a reason to abandon it; it is a reason to partner, or to re-scope toward Tier B, which leans on EOP and sequencing you already do. Worth knowing before Phase 3, not after.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Roadmap</p>
+  <h2>Five phases, each with a way to stop</h2>
+  <div class="phases">
+    <div class="phase"><span class="ph">Phase 1 · 0–3 mo</span><span class="pd"><b>Substrate and re-annotation</b><p>Corpus snapshots; recoding-aware, no-floor ORF re-calling; synteny and cassette atlas. Publishable as a community resource even if everything downstream fails.</p><span class="gate">Gate — measurable gain in coding density and recovered ORFs vs. GenBank</span></span></div>
+    <div class="phase"><span class="ph">Phase 2 · 3–6 mo</span><span class="pd"><b>Sensors, gauntlet, retrospective benchmark</b><p>Certify each detector on structure-matched nulls, then run the 2021-frozen rediscovery test on the clean, non-PLM subset. <strong>This is the go/no-go.</strong></p><span class="gate">Gate — clean recall meaningfully above chance, or stop entirely</span></span></div>
+    <div class="phase"><span class="ph">Phase 3 · 6–9 mo</span><span class="pd"><b>Synthesis, critique, queue</b><p>Three LLM roles, three-tier prior-art gate, pre-registration schema.</p><span class="gate">Gate — null-corpus yield is a small fraction of real-corpus yield</span></span></div>
+    <div class="phase"><span class="ph">Phase 4 · 9–15 mo</span><span class="pd"><b>Bench loop and calibration</b><p>First pre-registered experiments, including the stratified calibration sample.</p><span class="gate">Gate — top-bin hit rate within defensible distance of 44.7%</span></span></div>
+    <div class="phase"><span class="ph">Phase 5</span><span class="pd"><b>Expansion</b><p>Tier B mechanisms; the lab's EOP residuals; target assignment extended across host groups.</p></span></div>
+  </div>
+  <div class="col body-flow" style="margin-top:30px">
+    <p><strong>The risk I rate highest is not technical.</strong> It is that the system emits 200 well-formatted, well-cited, falsifiable hypotheses and the lab has bandwidth for six. A queue longer than throughput is a queue nobody reads. So the system should be tuned to emit roughly two to three times actual experimental capacity and no more — <em>deliberately discarding real findings to protect the credibility of the ones it surfaces</em>. That is an uncomfortable design choice and I believe it is the correct one.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Red team</p>
+  <h2>What I rejected, including my own ideas</h2>
+  <div class="rejects">
+    <div class="reject"><span class="tag">Killed — seed</span><b>Absence as headline mechanism</b><span>Demoted to conditional. A corpus with a falling novel fraction can't tell absent from unsampled.</span></div>
+    <div class="reject"><span class="tag">Killed — mine</span><b>A phage foundation model</b><span>Attractive and expensive. Evo 2's failure on long-range genomic structure says the generative direction isn't ready.</span></div>
+    <div class="reject"><span class="tag">Killed — mine</span><b>A learned EOP predictor</b><span>Matrix too small, labels heterogeneous, published ceiling AUC 0.818 in an easier setting. Replaced with residual analysis.</span></div>
+    <div class="reject"><span class="tag">Killed — mine</span><b>LLM-scored novelty as a ranking term</b><span>LLM judges overvalue novel-<em>sounding</em> ideas and undervalue ideas that anticipate real research.</span></div>
+    <div class="reject"><span class="tag">Narrowed — mine</span><b>My own best mechanism</b><span>"Find arms-race hotspots" is already built and already mined for P2/P4. A1 survives only as target assignment plus calibrated triage. Better to narrow it now than in month five.</span></div>
+    <div class="reject"><span class="tag">Abandon trigger</span><b>What would end this</b><span>A clean retrospective benchmark at chance. Everything else here is recoverable; that isn't.</span></div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">If forced to pick one</p>
+  <h2>Build the re-annotation first</h2>
+  <div class="col body-flow">
+    <p>A recoding-aware, no-length-floor re-annotation of the phage corpus, scored against λ's 55 known-missing ORFs as a positive control. It is cheap. It is verifiable against ground truth that already exists. It is useful to the community whether or not the rest gets built. And it produces exactly the substrate the anti-defense mechanisms need — because 80% of anti-defense proteins fall below the floor that every current pipeline imposes.</p>
+    <p>If that single artifact is all this project ever ships, it will still have been worth building.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Full study — research agenda, Phase 0 immersion, mechanism catalogue, architecture, honesty machinery, roadmap and red team — in <span style="font-family:var(--mono)">phage-discovery-engine/research/</span> on branch <span style="font-family:var(--mono)">claude/phage-discovery-engine-research-o1uspj</span>.</p>
+  <p>Claims labelled by confidence throughout. Speculation is marked as speculation. Sourcing rests on search synthesis and abstracts, not full-text reading.</p>
+</footer>
+
+</div>
