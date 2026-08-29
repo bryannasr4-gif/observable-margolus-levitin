@@ -9,6 +9,7 @@ authors:
 # MIT covers the code and data under numerics/. The manuscript text and figures under
 # paper/ are (c) 2026 Bryan Nasr, released separately under CC BY 4.0 (see README.md).
 license: MIT
+doi: "10.5281/zenodo.22165921"
 repository-code: "https://github.com/bryannasr4-gif/observable-margolus-levitin"
 date-released: "2026-08-29"
 keywords:

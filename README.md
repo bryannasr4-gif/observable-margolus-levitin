@@ -2,6 +2,8 @@
 
 **Mean energy bounds the change of an expectation value — quadratically.**
 
+[![arXiv](https://img.shields.io/badge/arXiv-2608.22658-b31b1b.svg)](https://arxiv.org/abs/2608.22658)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22165921.svg)](https://doi.org/10.5281/zenodo.22165921)
 [![build-paper](https://github.com/bryannasr4-gif/observable-margolus-levitin/actions/workflows/build-paper.yml/badge.svg)](https://github.com/bryannasr4-gif/observable-margolus-levitin/actions/workflows/build-paper.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Paper: RevTeX](https://img.shields.io/badge/paper-RevTeX%204--2-informational.svg)](paper/main.tex)
@@ -176,7 +178,11 @@ time-dependent-$H$ setting. The bound, the constant, and every number in the pap
 If you use this work, please cite the manuscript (see [`CITATION.cff`](CITATION.cff)):
 
 > B. Nasr, *A Margolus–Levitin speed limit for observables: mean energy bounds expectation-value
-> change quadratically* (2026).
+> change quadratically*, arXiv:2608.22658 [quant-ph] (2026).
+
+The code and data in this repository are archived independently and have their own DOI:
+[10.5281/zenodo.22165921](https://doi.org/10.5281/zenodo.22165921) (concept DOI; always resolves to
+the latest release).
 
 ## License
 
