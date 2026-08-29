@@ -5,11 +5,12 @@ type: software
 authors:
   - family-names: Nasr
     given-names: Bryan
+    orcid: "https://orcid.org/0009-0008-2360-7522"
 # MIT covers the code and data under numerics/. The manuscript text and figures under
 # paper/ are (c) 2026 Bryan Nasr, released separately under CC BY 4.0 (see README.md).
 license: MIT
 repository-code: "https://github.com/bryannasr4-gif/observable-margolus-levitin"
-date-released: "2026-07-05"
+date-released: "2026-08-29"
 keywords:
   - quantum speed limits
   - Margolus–Levitin bound
@@ -21,5 +22,11 @@ preferred-citation:
   authors:
     - family-names: Nasr
       given-names: Bryan
+      orcid: "https://orcid.org/0009-0008-2360-7522"
   year: 2026
-  notes: "Preprint."
+  url: "https://arxiv.org/abs/2608.22658"
+  identifiers:
+    - type: other
+      value: "arXiv:2608.22658"
+      description: "arXiv preprint identifier"
+  notes: "Preprint, arXiv:2608.22658 [quant-ph]."

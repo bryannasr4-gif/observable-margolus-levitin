@@ -1,0 +1,36 @@
+{
+    "upload_type": "software",
+    "title": "Numerical verification suite for \"A Margolus\u2013Levitin speed limit for observables: mean energy bounds expectation-value change quadratically\"",
+    "description": "<p>Manuscript source and the complete, seeded numerical verification suite for a quantum speed limit on <em>observables</em> powered by the <em>mean</em> energy above the ground state.</p><p>For every time-independent Hamiltonian H with ground energy E_0, every bounded observable A of spectral spread sigma_A, and every pure or mixed state, T (&lt;H&gt; - E_0) &gt;= C_* Delta^2 / sigma_A^2, where Delta is the change in the expectation value of A and C_* = 1/(8 sin x_*) = 0.172506267461..., with x_* the smallest positive root of tan(x/2) = x. The accompanying no-go theorem shows the optimal state-independent mean-energy exponent of Delta is exactly two, so no linear mean-energy bound of this form exists.</p><p>The <code>numerics/</code> directory reproduces every quoted value in the manuscript from seeded scripts, consolidated in <code>results.json</code>; <code>numerics/README.md</code> maps each number to the script that produces it. The <code>paper/</code> directory holds the RevTeX 4.2 source and figures.</p><p>Licensing is split: code and data under <code>numerics/</code> are MIT; the manuscript text and figures under <code>paper/</code> are Copyright 2026 Bryan Nasr, released under CC BY 4.0. See README.md.</p>",
+    "creators": [
+        {
+            "name": "Nasr, Bryan",
+            "orcid": "0009-0008-2360-7522"
+        }
+    ],
+    "access_right": "open",
+    "license": "mit",
+    "language": "eng",
+    "keywords": [
+        "quantum speed limits",
+        "Margolus-Levitin bound",
+        "observables",
+        "quantum information",
+        "quantum metrology",
+        "autonomous quantum clocks"
+    ],
+    "related_identifiers": [
+        {
+            "identifier": "arXiv:2608.22658",
+            "relation": "isSupplementTo",
+            "scheme": "arxiv",
+            "resource_type": "publication-article"
+        },
+        {
+            "identifier": "https://github.com/bryannasr4-gif/observable-margolus-levitin",
+            "relation": "isSupplementTo",
+            "scheme": "url",
+            "resource_type": "software"
+        }
+    ]
+}
